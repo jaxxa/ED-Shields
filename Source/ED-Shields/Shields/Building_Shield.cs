@@ -103,7 +103,7 @@ namespace Enhanced_Development.Shields
             {
                 return this.m_CurrentStatus;
             }
-            set 
+            set
             {
                 this.m_CurrentStatus = value;
 
@@ -396,7 +396,7 @@ namespace Enhanced_Development.Shields
 
         public void ReCalibrateCells()
         {
-            Log.Message("Recalibrate");
+            //Log.Message("Recalibrate");
             this.CellsToProtect = new List<IntVec3>();
 
             if (this.m_StructuralIntegrityMode)
@@ -405,7 +405,7 @@ namespace Enhanced_Development.Shields
 
                 foreach (IntVec3 _Square in _AllSquares)
                 {
-                    Log.Message("Testing:" + _Square.ToString());
+                    // Log.Message("Testing:" + _Square.ToString());
                     List<Thing> _Things = Find.ThingGrid.ThingsListAt(_Square);
 
                     for (int i = 0, l = _Things.Count(); i < l; i++)
@@ -430,7 +430,8 @@ namespace Enhanced_Development.Shields
 
                 foreach (IntVec3 _Square in _AllSquares)
                 {
-                    if (Vectors.VectorSize(_Square) >= (float)this.m_Field_Radius - 1.5f)
+                    //if (Vectors.VectorSize(_Square) >= (float)this.m_Field_Radius - 1.5f)
+                    if (Vectors.EuclDist(_Square, this.Position) >= (float)this.m_Field_Radius - 1.5f)
                     {
                         this.CellsToProtect.Add(_Square);
                     }
@@ -630,7 +631,7 @@ namespace Enhanced_Development.Shields
                         currentDropPod.Destroy(DestroyMode.Vanish);
 
 
-                       // BodyPartDamageInfo bodyPartDamageInfo = new BodyPartDamageInfo(new BodyPartHeight?(), new BodyPartDepth?(BodyPartDepth.Outside));
+                        // BodyPartDamageInfo bodyPartDamageInfo = new BodyPartDamageInfo(new BodyPartHeight?(), new BodyPartDepth?(BodyPartDepth.Outside));
                         //new ExplosionInfo()
                         //{
                         //    center = currentDropPod.Position,
@@ -1118,9 +1119,9 @@ namespace Enhanced_Development.Shields
             Scribe_Values.LookValue(ref m_ColourRed, "m_colourRed");
             Scribe_Values.LookValue(ref m_ColourGreen, "m_colourGreen");
             Scribe_Values.LookValue(ref m_ColourBlue, "m_colourBlue");
-            
+
             Scribe_Values.LookValue(ref m_WarmupTicksRemaining, "m_WarmupTicksRemaining");
-            
+
             Scribe_Values.LookValue(ref m_CurrentStatus, "m_CurrentStatus");
             Scribe_Values.LookValue(ref m_FieldIntegrity_Current, "m_FieldIntegrity_Current");
         }
