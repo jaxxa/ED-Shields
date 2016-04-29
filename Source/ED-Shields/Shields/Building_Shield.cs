@@ -348,9 +348,16 @@ namespace Enhanced_Development.Shields
                     break;
 
                 case (enumShieldStatus.ActiveSustaining):
-                    if (this.FieldIntegrity_Current < this.m_FieldIntegrity_Max)
+                    if (!_PowerAvalable)
                     {
-                        this.CurrentStatus = enumShieldStatus.ActiveCharging;
+                        this.CurrentStatus = enumShieldStatus.ActiveDischarging;
+                    }
+                    else
+                    {
+                        if (this.FieldIntegrity_Current < this.m_FieldIntegrity_Max)
+                        {
+                            this.CurrentStatus = enumShieldStatus.ActiveCharging;
+                        }
                     }
                     break;
             }

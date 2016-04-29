@@ -11,3 +11,6 @@ This mod allows you to place shield generators. They are expensive and power hun
 
 01.00.01
 *Fix for Shields blocking not just from the edge.
+
+01.00.02
+*Fix for Fully charged shields not losing Strength when Power is lost.
