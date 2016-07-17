@@ -15,7 +15,7 @@
 	<ThingDef Class="Enhanced_Development.Shields.ShieldBuildingThingDef" ParentName="BuildingBase" Name="ShieldBase" Abstract="True">
 		<category>Building</category>
 		<thingClass>Enhanced_Development.Shields.Building_Shield</thingClass>
-		<altitudeLayer>BuildingTall</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<blockLight>true</blockLight>
 		<drawerType>MapMeshAndRealTime</drawerType>

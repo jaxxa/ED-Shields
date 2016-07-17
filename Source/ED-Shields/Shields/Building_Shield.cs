@@ -13,6 +13,7 @@ using Enhanced_Development.ShieldUtils;
 
 namespace Enhanced_Development.Shields
 {
+    [StaticConstructorOnStartup]
     public class Building_Shield : Building
     {
 
@@ -486,17 +487,14 @@ namespace Enhanced_Development.Shields
                             {
                                 if (launcher.Faction != null)
                                 {
-                                    if (launcher.Faction.def != null)
+                                    //Log.Message("launcher != null");
+                                    if (launcher.Faction.IsPlayer)
                                     {
-                                        //Log.Message("launcher != null");
-                                        if (launcher.Faction.def == FactionDefOf.Colony)
-                                        {
-                                            wantToIntercept = false;
-                                        }
-                                        else
-                                        {
+                                        wantToIntercept = false;
+                                    }
+                                    else
+                                    {
 
-                                        }
                                     }
                                 }
                             }

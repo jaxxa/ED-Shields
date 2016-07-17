@@ -7,6 +7,7 @@ using Verse;
 
 namespace Enhanced_Development.Shields
 {
+    [StaticConstructorOnStartup]
     class ShieldBlendingParticle
     {
         private static readonly Material ShieldSparksMat = MaterialPool.MatFrom("Things/ShieldSparks", MatBases.LightOverlay);
