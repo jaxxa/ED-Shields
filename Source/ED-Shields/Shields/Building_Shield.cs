@@ -1056,6 +1056,10 @@ namespace Enhanced_Development.Shields
 
         private void SwitchDirect()
         {
+            Find.WindowStack.Add((Window)new Dialog_Slider("Shield Text", 0, 100, (Action<int>)(value =>
+             {
+                 
+             }), 50));
             m_BlockIndirect_Active = !m_BlockIndirect_Active;
         }
 
