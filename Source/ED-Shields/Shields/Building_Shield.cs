@@ -850,8 +850,16 @@ namespace EnhancedDevelopment.Shields.Basic
                 string text = m_Power.CompInspectStringExtra();
                 if (!text.NullOrEmpty())
                 {
-                    stringBuilder.AppendLine(text);
+                    stringBuilder.Append(text);
                 }
+                else
+                {
+                    stringBuilder.Append("Error, No Power Comp Text.");
+                }
+            }
+            else
+            {
+                stringBuilder.Append("Error, No Power Comp.");
             }
 
             return stringBuilder.ToString();
