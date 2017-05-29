@@ -7,8 +7,8 @@
     <ProjectGuid>{D90E6072-FBE5-4A86-A1E1-11E12DC5E27B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Enhanced_Development</RootNamespace>
-    <AssemblyName>ED-Shields</AssemblyName>
+    <RootNamespace>EnhancedDevelopment.Shields.Basic</RootNamespace>
+    <AssemblyName>ED-ShieldsBasic</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\ED-Shields\Assemblies\</OutputPath>
+    <OutputPath>..\..\ED-ShieldsBasic\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\lib\A16.1361\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\lib\A16\A16.1393\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -42,16 +42,17 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\lib\A16.1361\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\lib\A16\A16.1393\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shields\Building_Shield.cs" />
+    <Compile Include="Shields\Comp_ShieldBuilding.cs" />
     <Compile Include="Shields\enumShieldStatus.cs" />
     <Compile Include="Shields\ShieldBlendingParticle.cs" />
-    <Compile Include="Shields\ShieldBuildingThingDef.cs" />
+    <Compile Include="Shields\CompProperties_ShieldBuilding.cs" />
     <Compile Include="Utilities\Graphics.cs" />
     <Compile Include="Utilities\ReflectionHelper.cs" />
     <Compile Include="Utilities\Vectors.cs" />

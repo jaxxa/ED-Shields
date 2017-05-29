@@ -9,9 +9,9 @@ using RimWorld;
 using Verse;
 using Verse.Sound;
 
-using Enhanced_Development.ShieldUtils;
+using EnhancedDevelopment.Shields.Basic.ShieldUtils;
 
-namespace Enhanced_Development.Shields
+namespace EnhancedDevelopment.Shields.Basic
 {
     [StaticConstructorOnStartup]
     public class Building_Shield : Building
@@ -98,7 +98,7 @@ namespace Enhanced_Development.Shields
 
         #region Properties
 
-        enumShieldStatus CurrentStatus
+        public enumShieldStatus CurrentStatus
         {
             get
             {
@@ -168,18 +168,10 @@ namespace Enhanced_Development.Shields
 
         #region Initilisation
 
-        //Dummy override
-        //This is called before Spawn Setup.
-        public override void PostMake()
-        {
-            base.PostMake();
-            //Log.Message("PM");
-        }
+        //Constructor
 
-        //On spawn, get the power component reference
-        public override void SpawnSetup(Map map)
+        static Building_Shield()
         {
-            //Log.Message("SS");
             //Setup UI
             UI_DIRECT_OFF = ContentFinder<Texture2D>.Get("UI/DirectOff", true);
             UI_DIRECT_ON = ContentFinder<Texture2D>.Get("UI/DirectOn", true);
@@ -195,35 +187,51 @@ namespace Enhanced_Development.Shields
 
             UI_SHOW_ON = ContentFinder<Texture2D>.Get("UI/ShieldShowOn", true);
             UI_SHOW_OFF = ContentFinder<Texture2D>.Get("UI/ShieldShowOff", true);
+        }
+
+        //Dummy override
+        //This is called before Spawn Setup.
+        public override void PostMake()
+        {
+            base.PostMake();
+            //Log.Message("PM");
+        }
+
+        //On spawn, get the power component reference
+        public override void SpawnSetup(Map map)
+        {
+            //Log.Message("SS");
 
             base.SpawnSetup(map);
             this.m_Power = base.GetComp<CompPowerTrader>();
 
-            if (def is ShieldBuildingThingDef)
+            Comp_ShieldBuilding _CompShield = this.GetComp<Comp_ShieldBuilding>();
+            //_CompShield.props
+            if (_CompShield.props is CompProperties_ShieldBuilding)
             {
                 //Read in variables from the custom MyThingDef
-                m_FieldIntegrity_Max = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_FieldIntegrity_Max;
-                m_FieldIntegrity_Initial = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_FieldIntegrity_Initial;
-                m_Field_Radius = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_Field_Radius;
+                m_FieldIntegrity_Max = ((CompProperties_ShieldBuilding)_CompShield.props).m_FieldIntegrity_Max;
+                m_FieldIntegrity_Initial = ((CompProperties_ShieldBuilding)_CompShield.props).m_FieldIntegrity_Initial;
+                m_Field_Radius = ((CompProperties_ShieldBuilding)_CompShield.props).m_Field_Radius;
 
-                m_PowerRequired_Charging = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_PowerRequiredCharging;
-                m_PowerRequired_Sustaining = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_PowerRequiredSustaining;
+                m_PowerRequired_Charging = ((CompProperties_ShieldBuilding)_CompShield.props).m_PowerRequiredCharging;
+                m_PowerRequired_Sustaining = ((CompProperties_ShieldBuilding)_CompShield.props).m_PowerRequiredSustaining;
 
-                m_RechargeTickDelayInterval = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_RechargeTickDelayInterval;
-                m_RecoverWarmupDelayTicks = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_RecoverWarmupDelayTicks;
+                m_RechargeTickDelayInterval = ((CompProperties_ShieldBuilding)_CompShield.props).m_RechargeTickDelayInterval;
+                m_RecoverWarmupDelayTicks = ((CompProperties_ShieldBuilding)_CompShield.props).m_RecoverWarmupDelayTicks;
 
-                m_BlockIndirect_Avalable = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_BlockIndirect_Avalable;
-                m_BlockDirect_Avalable = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_BlockDirect_Avalable;
-                m_FireSupression_Avalable = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_FireSupression_Avalable;
-                m_InterceptDropPod_Avalable = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_InterceptDropPod_Avalable;
+                m_BlockIndirect_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_BlockIndirect_Avalable;
+                m_BlockDirect_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_BlockDirect_Avalable;
+                m_FireSupression_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_FireSupression_Avalable;
+                m_InterceptDropPod_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_InterceptDropPod_Avalable;
 
-                m_StructuralIntegrityMode = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_StructuralIntegrityMode;
+                m_StructuralIntegrityMode = ((CompProperties_ShieldBuilding)_CompShield.props).m_StructuralIntegrityMode;
 
-                m_ColourRed = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_ColourRed;
-                m_ColourGreen = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_ColourGreen;
-                m_ColourBlue = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).m_ColourBlue;
+                m_ColourRed = ((CompProperties_ShieldBuilding)_CompShield.props).m_ColourRed;
+                m_ColourGreen = ((CompProperties_ShieldBuilding)_CompShield.props).m_ColourGreen;
+                m_ColourBlue = ((CompProperties_ShieldBuilding)_CompShield.props).m_ColourBlue;
 
-                m_SIFBuildings = ((Enhanced_Development.Shields.ShieldBuildingThingDef)def).SIFBuildings;
+                m_SIFBuildings = ((CompProperties_ShieldBuilding)_CompShield.props).SIFBuildings;
                 //Log.Error("Count:" + SIFBuildings.Count);
             }
             else
@@ -259,7 +267,7 @@ namespace Enhanced_Development.Shields
             this.TickRecharge();
         }
 
-        private bool IsActive()
+        public bool IsActive()
         {
             //return true;
             return (this.CurrentStatus == enumShieldStatus.ActiveCharging ||
@@ -267,7 +275,7 @@ namespace Enhanced_Development.Shields
                  this.CurrentStatus == enumShieldStatus.ActiveSustaining);
         }
 
-        private bool CheckPowerOn()
+        public bool CheckPowerOn()
         {
             if (this.m_Power != null)
             {
@@ -415,7 +423,7 @@ namespace Enhanced_Development.Shields
                 {
                     // Log.Message("Testing:" + _Square.ToString());
                     List<Thing> _Things = this.Map.thingGrid.ThingsListAt(_Square);
-                    
+
                     for (int i = 0, l = _Things.Count(); i < l; i++)
                     {
                         if (_Things[i] is Building)
@@ -671,7 +679,7 @@ namespace Enhanced_Development.Shields
                                 //Damage the shield
                                 ProcessDamage(DAMAGE_FROM_FIRE);
 
-                                currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE,-1 ,this));
+                                currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE, -1, this));
                             }
                         }
                     }
@@ -810,7 +818,7 @@ namespace Enhanced_Development.Shields
                 currentMatrialColour = SolidColorMaterials.NewSolidColorMaterial(new Color(m_ColourRed, m_ColourGreen, m_ColourBlue, 0.15f), ShaderDatabase.MetaOverlay);
             }
 
-            UnityEngine.Graphics.DrawMesh(Enhanced_Development.ShieldUtils.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
+            UnityEngine.Graphics.DrawMesh(EnhancedDevelopment.Shields.Basic.ShieldUtils.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
 
         }
 

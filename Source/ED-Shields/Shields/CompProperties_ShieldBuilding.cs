@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Verse;
 
-namespace Enhanced_Development.Shields
+namespace EnhancedDevelopment.Shields.Basic
 {
-    public class ShieldBuildingThingDef : Verse.ThingDef
+
+    public class CompProperties_ShieldBuilding : CompProperties
+    //public class Comp_ShieldBuilding : ThingComp
     {
+
+        public CompProperties_ShieldBuilding()
+        {
+            this.compClass = typeof(Comp_ShieldBuilding);
+        }
+
         public int m_FieldIntegrity_Max;
         public int m_FieldIntegrity_Initial;
         public int m_Field_Radius;

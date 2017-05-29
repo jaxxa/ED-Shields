@@ -11,8 +11,6 @@
 		<baseCost>1000</baseCost>
 		<techLevel>Spacer</techLevel>
 		<prerequisites/>
-		<researchViewX>13</researchViewX>
-		<researchViewY>1</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -25,8 +23,6 @@
 		<prerequisites>
 			<li>Building_ShieldStandard_research</li>
 		</prerequisites>
-		<researchViewX>13</researchViewX>
-		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -39,8 +35,6 @@
 		<prerequisites>
 			<li>Building_ShieldStandard_research</li>
 		</prerequisites>
-		<researchViewX>13</researchViewX>
-		<researchViewY>3</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -53,8 +47,6 @@
 		<prerequisites>
 			<li>Building_ShieldStandard_research</li>
 		</prerequisites>
-		<researchViewX>13</researchViewX>
-		<researchViewY>4</researchViewY>
 	</ResearchProjectDef>
 
 	<!--
@@ -69,9 +61,14 @@
 			<li>Building_ShieldSIF_research</li>
 			<li>Building_ShieldSmall_research</li>
 		</prerequisites>
-		<researchViewX>13</researchViewX>
-		<researchViewY>3</researchViewY>
 	</ResearchProjectDef>
 	-->
 
 </ResearchProjectDefs>
+
+<!--
+    <prerequisites>
+      <li>ShipBasics</li>
+    </prerequisites>
+	
+-->

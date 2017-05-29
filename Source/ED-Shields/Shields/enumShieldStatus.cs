@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Enhanced_Development.Shields
+namespace EnhancedDevelopment.Shields.Basic
 {
     public enum enumShieldStatus
     {

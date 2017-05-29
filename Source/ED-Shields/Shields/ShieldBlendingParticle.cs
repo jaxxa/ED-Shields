@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace Enhanced_Development.Shields
+namespace EnhancedDevelopment.Shields.Basic
 {
     [StaticConstructorOnStartup]
     class ShieldBlendingParticle

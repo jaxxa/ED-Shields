@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>ED-ShieldsBasic</name>
+	<targetVersion>0.16.1393</targetVersion>
+	<author>Jaxxa</author>
+	<url>https://ludeon.com/forums/index.php?topic=18995.0</url>
+	<description>Version: 03.00.02
+Discussion, Non Steam Downloads and GitHub Repositories of this mod is available at: https://ludeon.com/forums/index.php?topic=18995
+Please Use that Thread for Discussion / Feedback that would like me to reply to. 
+Ideally Bugs should be logged on GitHub although in the discussion thread is also fine.
+
+This mod allows you to place shield generators. They are expensive and power hungry but can really strengthen your defences. The standard shields will stop projectiles that try to enter it, but allow weapons to be fired out.
+
+Credits:
+* Darker: Origional Mod http://ludeon.com/forums/index.php?topic=2677.msg24772#msg24772
+* Rilamus: Providing Art
+	</description>
+</ModMetaData>

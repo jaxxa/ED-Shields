@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace Enhanced_Development.ShieldUtils
+namespace EnhancedDevelopment.Shields.Basic.ShieldUtils
 {
     public static class Graphics
     {
