@@ -198,11 +198,11 @@ namespace EnhancedDevelopment.Shields.Basic
         }
 
         //On spawn, get the power component reference
-        public override void SpawnSetup(Map map)
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             //Log.Message("SS");
 
-            base.SpawnSetup(map);
+            base.SpawnSetup(map, respawningAfterLoad);
             this.m_Power = base.GetComp<CompPowerTrader>();
 
             Comp_ShieldBuilding _CompShield = this.GetComp<Comp_ShieldBuilding>();
@@ -1103,40 +1103,40 @@ namespace EnhancedDevelopment.Shields.Basic
 
             //  Scribe_Deep.LookDeep(ref shieldField, "shieldField");
 
-            Scribe_Values.LookValue(ref m_BlockIndirect_Active, "m_BlockIndirect_Active");
-            Scribe_Values.LookValue(ref m_BlockDirect_Active, "m_BlockDirect_Active");
-            Scribe_Values.LookValue(ref m_FireSupression_Active, "m_FireSupression_Active");
-            Scribe_Values.LookValue(ref m_RepairMode_Active, "m_RepairMode_Active");
-            Scribe_Values.LookValue(ref m_ShowVisually_Active, "m_ShowVisually_Active");
-            Scribe_Values.LookValue(ref m_InterceptDropPod_Active, "m_InterceptDropPod_Active");
+            Scribe_Values.Look(ref m_BlockIndirect_Active, "m_BlockIndirect_Active");
+            Scribe_Values.Look(ref m_BlockDirect_Active, "m_BlockDirect_Active");
+            Scribe_Values.Look(ref m_FireSupression_Active, "m_FireSupression_Active");
+            Scribe_Values.Look(ref m_RepairMode_Active, "m_RepairMode_Active");
+            Scribe_Values.Look(ref m_ShowVisually_Active, "m_ShowVisually_Active");
+            Scribe_Values.Look(ref m_InterceptDropPod_Active, "m_InterceptDropPod_Active");
 
-            Scribe_Values.LookValue(ref m_BlockIndirect_Avalable, "m_BlockIndirect_Avalable");
-            Scribe_Values.LookValue(ref m_BlockDirect_Avalable, "m_BlockDirect_Avalable");
-            Scribe_Values.LookValue(ref m_FireSupression_Avalable, "m_FireSupression_Avalable");
-            Scribe_Values.LookValue(ref m_InterceptDropPod_Avalable, "m_InterceptDropPod_Avalable");
+            Scribe_Values.Look(ref m_BlockIndirect_Avalable, "m_BlockIndirect_Avalable");
+            Scribe_Values.Look(ref m_BlockDirect_Avalable, "m_BlockDirect_Avalable");
+            Scribe_Values.Look(ref m_FireSupression_Avalable, "m_FireSupression_Avalable");
+            Scribe_Values.Look(ref m_InterceptDropPod_Avalable, "m_InterceptDropPod_Avalable");
 
-            Scribe_Values.LookValue(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
+            Scribe_Values.Look(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
 
-            Scribe_Values.LookValue(ref m_FieldIntegrity_Max, "m_FieldIntegrity_Max");
-            Scribe_Values.LookValue(ref m_FieldIntegrity_Initial, "m_FieldIntegrity_Initial");
-            Scribe_Values.LookValue(ref m_Field_Radius, "m_Field_Radius");
+            Scribe_Values.Look(ref m_FieldIntegrity_Max, "m_FieldIntegrity_Max");
+            Scribe_Values.Look(ref m_FieldIntegrity_Initial, "m_FieldIntegrity_Initial");
+            Scribe_Values.Look(ref m_Field_Radius, "m_Field_Radius");
 
-            Scribe_Values.LookValue(ref m_PowerRequired_Charging, "m_PowerRequired_Charging");
-            Scribe_Values.LookValue(ref m_PowerRequired_Sustaining, "m_PowerRequired_Sustaining");
+            Scribe_Values.Look(ref m_PowerRequired_Charging, "m_PowerRequired_Charging");
+            Scribe_Values.Look(ref m_PowerRequired_Sustaining, "m_PowerRequired_Sustaining");
 
-            Scribe_Values.LookValue(ref m_RechargeTickDelayInterval, "m_shieldRechargeTickDelay");
-            Scribe_Values.LookValue(ref m_RecoverWarmupDelayTicks, "m_shieldRecoverWarmup");
-            Scribe_Values.LookValue(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
-            Scribe_Values.LookValue(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
+            Scribe_Values.Look(ref m_RechargeTickDelayInterval, "m_shieldRechargeTickDelay");
+            Scribe_Values.Look(ref m_RecoverWarmupDelayTicks, "m_shieldRecoverWarmup");
+            Scribe_Values.Look(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
+            Scribe_Values.Look(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
 
-            Scribe_Values.LookValue(ref m_ColourRed, "m_colourRed");
-            Scribe_Values.LookValue(ref m_ColourGreen, "m_colourGreen");
-            Scribe_Values.LookValue(ref m_ColourBlue, "m_colourBlue");
+            Scribe_Values.Look(ref m_ColourRed, "m_colourRed");
+            Scribe_Values.Look(ref m_ColourGreen, "m_colourGreen");
+            Scribe_Values.Look(ref m_ColourBlue, "m_colourBlue");
 
-            Scribe_Values.LookValue(ref m_WarmupTicksRemaining, "m_WarmupTicksRemaining");
+            Scribe_Values.Look(ref m_WarmupTicksRemaining, "m_WarmupTicksRemaining");
 
-            Scribe_Values.LookValue(ref m_CurrentStatus, "m_CurrentStatus");
-            Scribe_Values.LookValue(ref m_FieldIntegrity_Current, "m_FieldIntegrity_Current");
+            Scribe_Values.Look(ref m_CurrentStatus, "m_CurrentStatus");
+            Scribe_Values.Look(ref m_FieldIntegrity_Current, "m_FieldIntegrity_Current");
         }
 
         #endregion
