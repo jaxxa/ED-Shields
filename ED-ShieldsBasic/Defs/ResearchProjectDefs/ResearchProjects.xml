@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResearchProjectDefs>
 
+	<ResearchTabDef>
+		<defName>EnhancedDevelopment</defName>
+		<label>Enhanced Development</label>
+	</ResearchTabDef>
+	
 	<ResearchProjectDef>
 		<defName>Building_ShieldStandard_research</defName>
 		<label>Standard Shield Generator</label>
@@ -11,6 +16,9 @@
 		<baseCost>1000</baseCost>
 		<techLevel>Spacer</techLevel>
 		<prerequisites/>
+		<tab>EnhancedDevelopment</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>1</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -23,6 +31,9 @@
 		<prerequisites>
 			<li>Building_ShieldStandard_research</li>
 		</prerequisites>
+		<tab>EnhancedDevelopment</tab>
+		<researchViewX>1</researchViewX>
+		<researchViewY>0</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -35,6 +46,9 @@
 		<prerequisites>
 			<li>Building_ShieldStandard_research</li>
 		</prerequisites>
+		<tab>EnhancedDevelopment</tab>
+		<researchViewX>1</researchViewX>
+		<researchViewY>1</researchViewY>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -47,20 +61,25 @@
 		<prerequisites>
 			<li>Building_ShieldStandard_research</li>
 		</prerequisites>
+		<tab>EnhancedDevelopment</tab>
+		<researchViewX>1</researchViewX>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 
 	<!--
 	<ResearchProjectDef>
-		<defName>Personal_Shield_research</defName>
-		<label>Personal Shield Research</label>
-		<description>Using nano technology and miniaturisation a personal version of the shield generator has been developed.
+		<defName>Building_ShieldStandard_research</defName>
+		<label>Standard Shield Generator</label>
+		<description>Magnetic shield field slows and heats any projectiles to the point of evaporating.
+
+    The basics of the principle is the eddy current brake, however the complex system allows the barier to ignore projectiles that leave the shield. 
 		</description>
-		<baseCost>50000</baseCost>
-		<prerequisites>
-			<li>Building_ShieldBasic_research</li>
-			<li>Building_ShieldSIF_research</li>
-			<li>Building_ShieldSmall_research</li>
-		</prerequisites>
+		<baseCost>1000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites/>
+		<tab>EnhancedDevelopment</tab>
+		<researchViewX>0</researchViewX>
+		<researchViewY>0</researchViewY>
 	</ResearchProjectDef>
 	-->
 
