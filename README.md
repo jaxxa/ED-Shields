@@ -27,3 +27,6 @@ This mod allows you to place shield generators. They are expensive and power hun
 
 03.00.02
 * Shields now Require Components
+
+0.18.0.0
+* 
