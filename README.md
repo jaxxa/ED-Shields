@@ -29,4 +29,4 @@ This mod allows you to place shield generators. They are expensive and power hun
 * Shields now Require Components
 
 0.18.0.0
-* 
+*Update to Beta 18
