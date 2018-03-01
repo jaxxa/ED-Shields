@@ -4,6 +4,52 @@ A mod for the Game Rimworld
 
 This mod allows you to place shield generators. They are expensive and power hungry but can really strengthen your defences. The standard shields will stop projectiles that try to enter it, but allow weapons to be fired out.
 
+#Specifications
+
+There are a number of different statistics that govern how Shield work.
+Strength: How much Damage a shield can Take
+Radius: How large the covered area is.
+BlockIndirect: Can is Block Bullets and other directly fired Projectiles.
+BlockDirect: Can it block Mortars and other Indirect Fire Weapons.
+FireSupression: Can is extinguish fires.
+DropPods: Can is target Drop Pods, frying their navigation and causing them to crash.
+
+
+	Standard Shield:
+Strength:4000
+Radius:8
+BlockIndirect:Yes
+BlockDirect:Yes
+FireSupression:Yes
+DropPods:No
+
+	Small shield:
+Strength:200
+Radius:2
+BlockIndirect:Yes
+BlockDirect:Yes
+FireSupression:Yes
+DropPods:No
+	
+	Fortress shield:
+Strength:16000
+Radius:20
+BlockIndirect:Yes
+BlockDirect:Yes
+FireSupression:No
+DropPods:Yes
+	
+	SIF shield:
+Strength:6000
+Radius:8
+BlockIndirect:No
+BlockDirect:Yes
+FireSupression:Yes
+DropPods:No
+
+This is a Special type of Shield that specifically covers certain building instead of creating a large bubble.
+	
+	
 #Change Log
 
 01.00.00
@@ -29,4 +75,7 @@ This mod allows you to place shield generators. They are expensive and power hun
 * Shields now Require Components
 
 0.18.0.0
-*Update to Beta 18
+* Update to Beta 18
+
+0.18.0.1
+* Increased Documentation.
