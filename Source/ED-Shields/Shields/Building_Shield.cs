@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using UnityEngine;
+using CombatExtended;
 
 using RimWorld;
 using Verse;
@@ -477,91 +478,188 @@ namespace EnhancedDevelopment.Shields.Basic
             for (int i = 0, l = things.Count(); i < l; i++)
             {
 
-                if (things[i] != null && things[i] is Projectile)
+                if (things[i] != null)
                 {
-                    //Assign to variable
-                    Projectile pr = (Projectile)things[i];
-                    if (!pr.Destroyed && ((this.m_BlockIndirect_Avalable && this.m_BlockDirect_Active && pr.def.projectile.flyOverhead) || (this.m_BlockDirect_Avalable && this.m_BlockIndirect_Active && !pr.def.projectile.flyOverhead)))
+                    if (things[i] is Projectile)
                     {
-                        bool wantToIntercept = true;
-
-                        //Check IFF
-                        if (_IFFCheck == true)
+                        //Assign to variable
+                        Projectile pr = (Projectile)things[i];
+                        if (!pr.Destroyed && ((this.m_BlockIndirect_Avalable && this.m_BlockDirect_Active && pr.def.projectile.flyOverhead) || (this.m_BlockDirect_Avalable && this.m_BlockIndirect_Active && !pr.def.projectile.flyOverhead)))
                         {
-                            //Log.Message("IFFcheck == true");
-                            Thing launcher = ReflectionHelper.GetInstanceField(typeof(Projectile), pr, "launcher") as Thing;
+                            bool wantToIntercept = true;
 
-                            if (launcher != null)
+                            //Check IFF
+                            if (_IFFCheck == true)
                             {
-                                if (launcher.Faction != null)
-                                {
-                                    //Log.Message("launcher != null");
-                                    if (launcher.Faction.IsPlayer)
-                                    {
-                                        wantToIntercept = false;
-                                    }
-                                    else
-                                    {
+                                //Log.Message("IFFcheck == true");
+                                Thing launcher = ReflectionHelper.GetInstanceField(typeof(Projectile), pr, "launcher") as Thing;
 
+                                if (launcher != null)
+                                {
+                                    if (launcher.Faction != null)
+                                    {
+                                        //Log.Message("launcher != null");
+                                        if (launcher.Faction.IsPlayer)
+                                        {
+                                            wantToIntercept = false;
+                                        }
+                                        else
+                                        {
+
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        //Check OverShoot
-                        if (pr.def.projectile.flyOverhead)
-                        {
-                            if (this.WillTargetLandInRange(pr))
+                            //Check OverShoot
+                            if (pr.def.projectile.flyOverhead)
                             {
-                                //Log.Message("Fly Over");
+                                if (this.WillTargetLandInRange(pr))
+                                {
+                                    //Log.Message("Fly Over");
+                                }
+                                else
+                                {
+                                    wantToIntercept = false;
+                                    //Log.Message("In Range");
+                                }
+                            }
+
+
+                            if (wantToIntercept)
+                            {
+
+                                //Detect proper collision using angles
+                                Quaternion targetAngle = pr.ExactRotation;
+
+                                Vector3 projectilePosition2D = pr.ExactPosition;
+                                projectilePosition2D.y = 0;
+
+                                Vector3 shieldPosition2D = Vectors.IntVecToVec(this.Position);
+                                shieldPosition2D.y = 0;
+
+                                Quaternion shieldProjAng = Quaternion.LookRotation(projectilePosition2D - shieldPosition2D);
+
+
+                                if ((Quaternion.Angle(targetAngle, shieldProjAng) > 90))
+                                {
+
+                                    //On hit effects
+                                    MoteMaker.ThrowLightningGlow(pr.ExactPosition, this.Map, 0.5f);
+                                    //On hit sound
+                                    HitSoundDef.PlayOneShot((SoundInfo)new TargetInfo(this.Position, this.Map, false));
+
+                                    //Damage the shield
+                                    ProcessDamage(pr.def.projectile.damageAmountBase);
+                                    //add projectile to the list of things to be destroyed
+                                    thingsToDestroy.Add(pr);
+                                }
                             }
                             else
                             {
-                                wantToIntercept = false;
-                                //Log.Message("In Range");
+                                //Log.Message("Skip");
                             }
+
                         }
-
-
-                        if (wantToIntercept)
+                    }
+                    
+                    else if (things[i] is ProjectileCE)
+                    {
+                        //Assign to variable
+                        ProjectileCE pr = (ProjectileCE) things[i];
+                        if (!pr.Destroyed &&
+                            ((this.m_BlockIndirect_Avalable && this.m_BlockDirect_Active &&
+                              pr.def.projectile.flyOverhead) ||
+                             (this.m_BlockDirect_Avalable && this.m_BlockIndirect_Active &&
+                              !pr.def.projectile.flyOverhead)))
                         {
+                            bool wantToIntercept = true;
 
-                            //Detect proper collision using angles
-                            Quaternion targetAngle = pr.ExactRotation;
+                            //Check IFF
+                            if (_IFFCheck == true)
+                            {
+                                //Log.Message("IFFcheck == true");
+                                Thing launcher =
+                                    ReflectionHelper.GetInstanceField(typeof(ProjectileCE), pr, "launcher") as Thing;
 
-                            Vector3 projectilePosition2D = pr.ExactPosition;
-                            projectilePosition2D.y = 0;
+                                if (launcher != null)
+                                {
+                                    if (launcher.Faction != null)
+                                    {
+                                        //Log.Message("launcher != null");
+                                        if (launcher.Faction.IsPlayer)
+                                        {
+                                            wantToIntercept = false;
+                                        }
+                                    }
+                                }
+                            }
 
-                            Vector3 shieldPosition2D = Vectors.IntVecToVec(this.Position);
-                            shieldPosition2D.y = 0;
+                            //Check OverShoot
+                            if (pr.def.projectile.flyOverhead)
+                            {
+                                if (this.WillTargetLandInRange(pr))
+                                {
+                                    //Log.Message("Fly Over");
+                                }
+                                else
+                                {
+                                    wantToIntercept = false;
+                                    //Log.Message("In Range");
+                                }
+                            }
 
-                            Quaternion shieldProjAng = Quaternion.LookRotation(projectilePosition2D - shieldPosition2D);
 
-
-                            if ((Quaternion.Angle(targetAngle, shieldProjAng) > 90))
+                            if (wantToIntercept)
                             {
 
-                                //On hit effects
-                                MoteMaker.ThrowLightningGlow(pr.ExactPosition, this.Map, 0.5f);
-                                //On hit sound
-                                HitSoundDef.PlayOneShot((SoundInfo)new TargetInfo(this.Position, this.Map, false));
+                                //Detect proper collision using angles
+                                Quaternion targetAngle = pr.ExactRotation;
 
-                                //Damage the shield
-                                ProcessDamage(pr.def.projectile.damageAmountBase);
-                                //add projectile to the list of things to be destroyed
-                                thingsToDestroy.Add(pr);
+                                Vector3 projectilePosition2D = pr.ExactPosition;
+                                projectilePosition2D.y = 0;
+
+                                Vector3 shieldPosition2D = Vectors.IntVecToVec(this.Position);
+                                shieldPosition2D.y = 0;
+
+                                Quaternion shieldProjAng =
+                                    Quaternion.LookRotation(projectilePosition2D - shieldPosition2D);
+
+
+                                if ((Quaternion.Angle(targetAngle, shieldProjAng) > 90))
+                                {
+
+                                    //On hit effects
+                                    MoteMaker.ThrowLightningGlow(pr.ExactPosition, this.Map, 0.5f);
+                                    //On hit sound
+                                    HitSoundDef.PlayOneShot((SoundInfo) new TargetInfo(this.Position, this.Map, false));
+
+                                    //Damage the shield
+                                    ProcessDamage(pr.def.projectile.damageAmountBase);
+                                    //add projectile to the list of things to be destroyed
+                                    thingsToDestroy.Add(pr);
+                                }
                             }
-                        }
-                        else
-                        {
-                            //Log.Message("Skip");
-                        }
+                            else
+                            {
+                                //Log.Message("Skip");
+                            }
 
+                        }
                     }
                 }
             }
             foreach (Thing currentThing in thingsToDestroy)
             {
+                if (currentThing is ProjectileCE) {
+                    Log.Message("CE Projectile");
+                    ProjectileCE projectile = (ProjectileCE) currentThing;
+                    Thing launcher = ReflectionHelper.GetInstanceField(typeof(ProjectileCE), projectile, "launcher") as Thing;
+                    CompExplosiveCE comp = projectile.TryGetComp<CompExplosiveCE>();
+                    if (comp!=null) {
+                        comp.Explode(launcher, projectile.ExactPosition, projectile.Map);
+                    }
+                }
                 currentThing.Destroy();
             }
 
@@ -597,8 +695,29 @@ namespace EnhancedDevelopment.Shields.Basic
                 return true;
             }
         }
+        
+        public bool WillTargetLandInRange(ProjectileCE projectile)
+        {
+            Vector3 targetLocation = GetTargetLocationFromProjectile(projectile);
+
+            if (Vector3.Distance(this.Position.ToVector3(), targetLocation) > this.m_Field_Radius)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         public Vector3 GetTargetLocationFromProjectile(Projectile projectile)
+        {
+            FieldInfo fieldInfo = projectile.GetType().GetField("destination", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+            Vector3 reoveredVector = (Vector3)fieldInfo.GetValue(projectile);
+            return reoveredVector;
+        }
+        
+        public Vector3 GetTargetLocationFromProjectile(ProjectileCE projectile)
         {
             FieldInfo fieldInfo = projectile.GetType().GetField("destination", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
             Vector3 reoveredVector = (Vector3)fieldInfo.GetValue(projectile);
