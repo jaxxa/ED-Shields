@@ -651,6 +651,15 @@ namespace EnhancedDevelopment.Shields.Basic
             }
             foreach (Thing currentThing in thingsToDestroy)
             {
+                if (currentThing is ProjectileCE) {
+                    Log.Message("CE Projectile");
+                    ProjectileCE projectile = (ProjectileCE) currentThing;
+                    Thing launcher = ReflectionHelper.GetInstanceField(typeof(ProjectileCE), projectile, "launcher") as Thing;
+                    CompExplosiveCE comp = projectile.TryGetComp<CompExplosiveCE>();
+                    if (comp!=null) {
+                        comp.Explode(launcher, projectile.ExactPosition, projectile.Map);
+                    }
+                }
                 currentThing.Destroy();
             }
 
