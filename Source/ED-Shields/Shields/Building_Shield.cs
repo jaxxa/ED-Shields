@@ -478,7 +478,6 @@ namespace EnhancedDevelopment.Shields.Basic
             for (int i = 0, l = things.Count(); i < l; i++)
             {
 
-
                 ProjectileTranslation.ProjectileTranslation _ProjectileTranslator = ProjectileHelper.GetTranslator(things[i]);
                 
                 if (_ProjectileTranslator != null)

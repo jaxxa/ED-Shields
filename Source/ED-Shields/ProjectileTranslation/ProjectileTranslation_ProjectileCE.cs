@@ -54,4 +54,14 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
             throw new NotImplementedException();
         }
     }
+
+
+    class ProjectileTranslationGenerator_ProjectileCE : ProjectileTranslationGenerator
+    {
+        public override ProjectileTranslation GetTranslator(Thing projectileThing)
+        {
+            return null;
+            //return ProjectileTranslation_VerseProjectile.GetSpecificTranslator(projectileThing);
+        }
+    }
 }

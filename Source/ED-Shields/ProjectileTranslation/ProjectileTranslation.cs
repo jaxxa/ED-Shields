@@ -29,4 +29,9 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
         public abstract Vector3 TargetLocation();
 
     }
+
+    abstract class ProjectileTranslationGenerator
+    {
+        public abstract ProjectileTranslation GetTranslator(Thing projectileThing);
+    }
 }

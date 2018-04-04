@@ -98,4 +98,12 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
             return reoveredVector;
         }
     }
+
+    class ProjectileTranslationGenerator_VerseProjectile : ProjectileTranslationGenerator
+    {
+        public override ProjectileTranslation GetTranslator(Thing projectileThing)
+        {
+            return ProjectileTranslation_VerseProjectile.GetSpecificTranslator(projectileThing);
+        }
+    }
 }
