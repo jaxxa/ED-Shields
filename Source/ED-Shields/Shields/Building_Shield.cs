@@ -10,6 +10,7 @@ using Verse;
 using Verse.Sound;
 
 using EnhancedDevelopment.Shields.Basic.ShieldUtils;
+using EnhancedDevelopment.Shields.Basic.ProjectileTranslation;
 
 namespace EnhancedDevelopment.Shields.Basic
 {
@@ -477,11 +478,14 @@ namespace EnhancedDevelopment.Shields.Basic
             for (int i = 0, l = things.Count(); i < l; i++)
             {
 
-                if (things[i] != null && things[i] is Projectile)
+
+                ProjectileTranslation.ProjectileTranslation _ProjectileTranslator = ProjectileHelper.GetTranslator(things[i]);
+                
+                if (_ProjectileTranslator != null)
                 {
                     //Assign to variable
-                    Projectile pr = (Projectile)things[i];
-                    if (!pr.Destroyed && ((this.m_BlockIndirect_Avalable && this.m_BlockDirect_Active && pr.def.projectile.flyOverhead) || (this.m_BlockDirect_Avalable && this.m_BlockIndirect_Active && !pr.def.projectile.flyOverhead)))
+                    //Projectile pr = (Projectile)things[i];
+                    if (!_ProjectileTranslator.Destroyed() && ((this.m_BlockIndirect_Avalable && this.m_BlockDirect_Active && _ProjectileTranslator.FlyOverhead()) || (this.m_BlockDirect_Avalable && this.m_BlockIndirect_Active && !_ProjectileTranslator.FlyOverhead())))
                     {
                         bool wantToIntercept = true;
 
@@ -489,7 +493,9 @@ namespace EnhancedDevelopment.Shields.Basic
                         if (_IFFCheck == true)
                         {
                             //Log.Message("IFFcheck == true");
-                            Thing launcher = ReflectionHelper.GetInstanceField(typeof(Projectile), pr, "launcher") as Thing;
+                            //Thing launcher = ReflectionHelper.GetInstanceField(typeof(Projectile), pr, "launcher") as Thing;
+                            Thing launcher = _ProjectileTranslator.Launcher();
+
 
                             if (launcher != null)
                             {
@@ -509,9 +515,10 @@ namespace EnhancedDevelopment.Shields.Basic
                         }
 
                         //Check OverShoot
-                        if (pr.def.projectile.flyOverhead)
+                        if (_ProjectileTranslator.FlyOverhead())
                         {
-                            if (this.WillTargetLandInRange(pr))
+                            
+                            if (_ProjectileTranslator.WillTargetLandInRange(this.m_Field_Radius))
                             {
                                 //Log.Message("Fly Over");
                             }
@@ -527,9 +534,9 @@ namespace EnhancedDevelopment.Shields.Basic
                         {
 
                             //Detect proper collision using angles
-                            Quaternion targetAngle = pr.ExactRotation;
+                            Quaternion targetAngle = _ProjectileTranslator.ExactRotation();
 
-                            Vector3 projectilePosition2D = pr.ExactPosition;
+                            Vector3 projectilePosition2D = _ProjectileTranslator.ExactPosition();
                             projectilePosition2D.y = 0;
 
                             Vector3 shieldPosition2D = Vectors.IntVecToVec(this.Position);
@@ -542,14 +549,14 @@ namespace EnhancedDevelopment.Shields.Basic
                             {
 
                                 //On hit effects
-                                MoteMaker.ThrowLightningGlow(pr.ExactPosition, this.Map, 0.5f);
+                                MoteMaker.ThrowLightningGlow(_ProjectileTranslator.ExactPosition(), this.Map, 0.5f);
                                 //On hit sound
                                 HitSoundDef.PlayOneShot((SoundInfo)new TargetInfo(this.Position, this.Map, false));
 
                                 //Damage the shield
-                                ProcessDamage(pr.def.projectile.damageAmountBase);
+                                ProcessDamage(_ProjectileTranslator.DamageAmountBase());
                                 //add projectile to the list of things to be destroyed
-                                thingsToDestroy.Add(pr);
+                                thingsToDestroy.Add(_ProjectileTranslator.ProjectileThing());
                             }
                         }
                         else
@@ -579,31 +586,6 @@ namespace EnhancedDevelopment.Shields.Basic
             this.FieldIntegrity_Current -= (int)(((float)damage) * powerToDamage);
         }
 
-        /// <summary>
-        /// Checks if the projectile will land within the shield or pass over.
-        /// </summary>
-        /// <param name="projectile">The specific projectile that is being checked</param>
-        /// <returns>True if the projectile will land close, false if it will be far away.</returns>
-        public bool WillTargetLandInRange(Projectile projectile)
-        {
-            Vector3 targetLocation = GetTargetLocationFromProjectile(projectile);
-
-            if (Vector3.Distance(this.Position.ToVector3(), targetLocation) > this.m_Field_Radius)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public Vector3 GetTargetLocationFromProjectile(Projectile projectile)
-        {
-            FieldInfo fieldInfo = projectile.GetType().GetField("destination", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
-            Vector3 reoveredVector = (Vector3)fieldInfo.GetValue(projectile);
-            return reoveredVector;
-        }
 
         public bool isBuildingValid(Thing currentBuilding)
         {

@@ -10,20 +10,13 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
     abstract class ProjectileTranslation
     {
 
-        public List<ProjectileTranslation> m_Translations = new List<ProjectileTranslation>();
-        
-        static ProjectileTranslation GetSpecificTranslator(Thing projectileThing)
-        {
-            return null;
-        }
-        
         public abstract bool Destroyed();
 
         public abstract bool FlyOverhead();
 
         public abstract Thing Launcher();
 
-        public abstract bool WillTargetLandInRange();
+        public abstract bool WillTargetLandInRange(int fieldRadius);
 
         public abstract Quaternion ExactRotation();
 
@@ -32,5 +25,8 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
         public abstract int DamageAmountBase();
 
         public abstract Thing ProjectileThing();
+
+        public abstract Vector3 TargetLocation();
+
     }
 }

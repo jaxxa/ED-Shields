@@ -44,7 +44,12 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
             throw new NotImplementedException();
         }
 
-        public override bool WillTargetLandInRange()
+        public override Vector3 TargetLocation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool WillTargetLandInRange(int fieldRadius)
         {
             throw new NotImplementedException();
         }
