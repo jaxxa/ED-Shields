@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CombatExtended;
+using EnhancedDevelopment.Shields.Basic.ShieldUtils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,39 +11,58 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
 {
     class ProjectileTranslation_ProjectileCE : ProjectileTranslation
     {
+        CombatExtended.ProjectileCE m_Projectile = null;
+
+        static public ProjectileTranslation GetSpecificTranslator(Thing projectileThing)
+        {
+            if (projectileThing is ProjectileCE)
+            {
+                ProjectileCE pr = projectileThing as ProjectileCE;
+                if (pr != null)
+                {
+                    ProjectileTranslation_ProjectileCE _Translator = new ProjectileTranslation_ProjectileCE();
+                    _Translator.m_Projectile = pr;
+                    return _Translator;
+                }
+            }
+            return null;
+
+        }
+
         public override int DamageAmountBase()
         {
-            throw new NotImplementedException();
+            Log.Message("DamangeCE");
+            return this.m_Projectile.def.projectile.damageAmountBase;
         }
 
         public override bool Destroyed()
         {
-            throw new NotImplementedException();
+            return this.m_Projectile.Destroyed;
         }
 
         public override Vector3 ExactPosition()
         {
-            throw new NotImplementedException();
+            return this.m_Projectile.ExactPosition;
         }
 
         public override Quaternion ExactRotation()
         {
-            throw new NotImplementedException();
+            return this.m_Projectile.ExactRotation;
         }
 
         public override bool FlyOverhead()
         {
-            throw new NotImplementedException();
+            return this.m_Projectile.def.projectile.flyOverhead;
         }
 
         public override Thing Launcher()
         {
-            throw new NotImplementedException();
+            return ReflectionHelper.GetInstanceField(typeof(ProjectileCE), this.m_Projectile, "launcher") as Thing;
         }
 
         public override Thing ProjectileThing()
         {
-            throw new NotImplementedException();
+            return this.m_Projectile;
         }
 
         public override Vector3 TargetLocation()
@@ -60,8 +81,7 @@ namespace EnhancedDevelopment.Shields.Basic.ProjectileTranslation
     {
         public override ProjectileTranslation GetTranslator(Thing projectileThing)
         {
-            return null;
-            //return ProjectileTranslation_VerseProjectile.GetSpecificTranslator(projectileThing);
+            return ProjectileTranslation_ProjectileCE.GetSpecificTranslator(projectileThing);
         }
     }
 }
