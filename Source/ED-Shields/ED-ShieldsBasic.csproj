@@ -47,6 +47,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\ITab_ShieldBuilding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shields\Building_Shield.cs" />
     <Compile Include="Shields\Comp_ShieldBuilding.cs" />

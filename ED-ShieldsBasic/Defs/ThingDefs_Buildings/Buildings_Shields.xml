@@ -38,6 +38,9 @@
 			<Silver>100</Silver>
 			<Component>15</Component>
 		</costList>
+    <inspectorTabs>
+      <li>EnhancedDevelopment.Shields.Basic.GUI.ITab_ShieldBuilding</li>
+    </inspectorTabs>
 		<passability>Impassable</passability>
 		<selectable>true</selectable>
 		<tickerType>Normal</tickerType>
