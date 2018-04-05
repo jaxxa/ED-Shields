@@ -1,6 +1,7 @@
 # ED-ShieldsBasic
 A mod for the Game Rimworld
 
+CE Issue - It looks like CE bullets are too fast to be consitently blocked by shields.
 
 This mod allows you to place shield generators. They are expensive and power hungry but can really strengthen your defences. The standard shields will stop projectiles that try to enter it, but allow weapons to be fired out.
 
