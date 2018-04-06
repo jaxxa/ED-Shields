@@ -1,4 +1,5 @@
-﻿using Harmony;
+﻿using EnhancedDevelopment.Shields.Basic;
+using Harmony;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,14 +91,16 @@ namespace EnhancedDevelopment.Shields
         // - wants instance, result and count
         // - wants to change count
         // - returns a boolean that controls if original is executed (true) or not (false)
-        public static Boolean ProjectileTickPrefix()
+        public static Boolean ProjectileTickPrefix(ref Projectile __instance)
         {
             Log.Message("Ticking Projectile");
             //This is the result that will be used, note that it was passed as a ref.
             //  __result = false;
 
+            __instance.Map.GetComponent<ShieldManagerMapComp>().WillBeBlocked(__instance);
+
             //Retuen False so the origional method is not executed, overriting the false result.
-            return true;
+            return false;
         }
 
         #endregion

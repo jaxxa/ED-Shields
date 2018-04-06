@@ -21,5 +21,15 @@ namespace EnhancedDevelopment.Shields.Basic
             base.MapComponentTick();
            // Log.Message("MapCompTick");
         }
+
+        public bool WillBeBlocked(Verse.Projectile projectile)
+        {
+
+            Log.Message("Blocked");
+            projectile.Destroy();
+            return true;
+        }
+
+
     }
 }
