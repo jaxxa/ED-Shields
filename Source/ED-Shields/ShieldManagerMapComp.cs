@@ -19,7 +19,7 @@ namespace EnhancedDevelopment.Shields.Basic
         public override void MapComponentTick()
         {
             base.MapComponentTick();
-            Log.Message("MapCompTick");
+           // Log.Message("MapCompTick");
         }
     }
 }
