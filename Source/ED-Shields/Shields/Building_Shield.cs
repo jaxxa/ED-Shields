@@ -73,7 +73,7 @@ namespace EnhancedDevelopment.Shields.Basic
         //variables that are read in from XML
         private int m_FieldIntegrity_Max;
         private int m_FieldIntegrity_Initial;
-        protected int m_Field_Radius;
+        public int m_Field_Radius;
 
         private int m_PowerRequired_Charging;
         private int m_PowerRequired_Sustaining;

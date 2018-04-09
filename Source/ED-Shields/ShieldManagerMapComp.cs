@@ -39,7 +39,7 @@ namespace EnhancedDevelopment.Shields.Basic
                 Log.Message("Shield:" + x.Position.ToVector3());
 
                 Log.Message("Distance: " + _Distance.ToString());
-                return _Distance <= 10;
+                return _Distance <= x.m_Field_Radius;
             }))
             {
                 Log.Message("Blocked");
