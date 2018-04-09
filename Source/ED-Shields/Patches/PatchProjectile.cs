@@ -97,10 +97,14 @@ namespace EnhancedDevelopment.Shields
             //This is the result that will be used, note that it was passed as a ref.
             //  __result = false;
 
-            __instance.Map.GetComponent<ShieldManagerMapComp>().WillBeBlocked(__instance);
+            if (__instance.Map.GetComponent<ShieldManagerMapComp>().WillBeBlocked(__instance))
+            {
+                return false;
+            }
+
 
             //Retuen False so the origional method is not executed, overriting the false result.
-            return false;
+            return true;
         }
 
         #endregion
