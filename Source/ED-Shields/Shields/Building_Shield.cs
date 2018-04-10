@@ -147,22 +147,22 @@ namespace EnhancedDevelopment.Shields.Basic
 
         //List of squares around the shield centre
 
-        List<IntVec3> CellsToProtect
-        {
-            get
-            {
-                if (this.m_CellsToProtect == null)
-                {
-                    this.ReCalibrateCells();
-                }
-                return this.m_CellsToProtect;
-            }
-            set
-            {
-                this.m_CellsToProtect = value;
-            }
-        }
-        List<IntVec3> m_CellsToProtect = null;
+        //List<IntVec3> CellsToProtect
+        //{
+        //    get
+        //    {
+        //        if (this.m_CellsToProtect == null)
+        //        {
+        //            this.ReCalibrateCells();
+        //        }
+        //        return this.m_CellsToProtect;
+        //    }
+        //    set
+        //    {
+        //        this.m_CellsToProtect = value;
+        //    }
+        //}
+        //List<IntVec3> m_CellsToProtect = null;
 
         #endregion
 
@@ -252,17 +252,17 @@ namespace EnhancedDevelopment.Shields.Basic
 
             //Disable shield when power goes off
 
-            //Do tick for the shield field
+            ////Do tick for the shield field
 
-            if (this.IsActive())
-            {
-                this.TickProtection();
+            //if (this.IsActive())
+            //{
+            //    this.TickProtection();
 
-                if (this.m_TickCount % 5000 == 0)
-                {
-                    this.ReCalibrateCells();
-                }
-            }
+            //    if (this.m_TickCount % 5000 == 0)
+            //    {
+            //        this.ReCalibrateCells();
+            //    }
+            //}
 
             this.TickRecharge();
         }
@@ -302,7 +302,7 @@ namespace EnhancedDevelopment.Shields.Basic
                         this.CurrentStatus = enumShieldStatus.Initilising;
                         //this.m_warmupTicksCurrent = GenDate.SecondsToTicks(this.m_shieldRecoverWarmup);
                         this.m_WarmupTicksRemaining = this.m_RecoverWarmupDelayTicks;
-                        this.CellsToProtect = null;
+                        //this.CellsToProtect = null;
                     }
                     break;
 
@@ -372,28 +372,28 @@ namespace EnhancedDevelopment.Shields.Basic
             }
         }
 
-        public void TickProtection()
-        {
+        //public void TickProtection()
+        //{
 
-            foreach (IntVec3 square in this.CellsToProtect)
-            {
-                //Only use squares around, not inside
-                this.ProtectSquare(square);
+        //    foreach (IntVec3 square in this.CellsToProtect)
+        //    {
+        //        //Only use squares around, not inside
+        //        this.ProtectSquare(square);
 
-                if (this.m_StructuralIntegrityMode)
-                {
-                    this.SupressFire(square);
-                    this.RepairSytem(square);
-                }
-            }
+        //        if (this.m_StructuralIntegrityMode)
+        //        {
+        //            this.SupressFire(square);
+        //            this.RepairSytem(square);
+        //        }
+        //    }
 
-            if (!this.m_StructuralIntegrityMode)
-            {
-                this.SupressFire();
-            }
+        //    if (!this.m_StructuralIntegrityMode)
+        //    {
+        //        this.SupressFire();
+        //    }
 
-            this.interceptPods();
-        }
+        //    this.interceptPods();
+        //}
 
         public void TickRecharge()
         {
@@ -410,52 +410,52 @@ namespace EnhancedDevelopment.Shields.Basic
             }
         }
 
-        public void ReCalibrateCells()
-        {
-            //Log.Message("Recalibrate");
-            this.CellsToProtect = new List<IntVec3>();
+        //public void ReCalibrateCells()
+        //{
+        //    //Log.Message("Recalibrate");
+        //    this.CellsToProtect = new List<IntVec3>();
 
-            if (this.m_StructuralIntegrityMode)
-            {
-                IEnumerable<IntVec3> _AllSquares = GenRadial.RadialCellsAround(this.Position, this.m_Field_Radius, false);
+        //    if (this.m_StructuralIntegrityMode)
+        //    {
+        //        IEnumerable<IntVec3> _AllSquares = GenRadial.RadialCellsAround(this.Position, this.m_Field_Radius, false);
 
-                foreach (IntVec3 _Square in _AllSquares)
-                {
-                    // Log.Message("Testing:" + _Square.ToString());
-                    List<Thing> _Things = this.Map.thingGrid.ThingsListAt(_Square);
+        //        foreach (IntVec3 _Square in _AllSquares)
+        //        {
+        //            // Log.Message("Testing:" + _Square.ToString());
+        //            List<Thing> _Things = this.Map.thingGrid.ThingsListAt(_Square);
 
-                    for (int i = 0, l = _Things.Count(); i < l; i++)
-                    {
-                        if (_Things[i] is Building)
-                        {
-                            Building building = (Building)_Things[i];
+        //            for (int i = 0, l = _Things.Count(); i < l; i++)
+        //            {
+        //                if (_Things[i] is Building)
+        //                {
+        //                    Building building = (Building)_Things[i];
 
-                            if (isBuildingValid(building))
-                            {
-                                this.CellsToProtect.Add(_Square);
-                                i = int.MaxValue - 1;
-                            }
-                        }
-                    }
-                }
+        //                    if (isBuildingValid(building))
+        //                    {
+        //                        this.CellsToProtect.Add(_Square);
+        //                        i = int.MaxValue - 1;
+        //                    }
+        //                }
+        //            }
+        //        }
 
-            }
-            else
-            {
-                IEnumerable<IntVec3> _AllSquares = GenRadial.RadialCellsAround(this.Position, this.m_Field_Radius, false);
+        //    }
+        //    else
+        //    {
+        //        IEnumerable<IntVec3> _AllSquares = GenRadial.RadialCellsAround(this.Position, this.m_Field_Radius, false);
 
-                foreach (IntVec3 _Square in _AllSquares)
-                {
-                    //if (Vectors.VectorSize(_Square) >= (float)this.m_Field_Radius - 1.5f)
-                    if (Vectors.EuclDist(_Square, this.Position) >= (float)this.m_Field_Radius - 1.5f)
-                    {
-                        this.CellsToProtect.Add(_Square);
-                    }
-                }
-            }
-            //this.m_CellsToProtect
-            //if (Vectors.VectorSize(square) >= (float)this.m_shieldShieldRadius - 1.5f)
-        }
+        //        foreach (IntVec3 _Square in _AllSquares)
+        //        {
+        //            //if (Vectors.VectorSize(_Square) >= (float)this.m_Field_Radius - 1.5f)
+        //            if (Vectors.EuclDist(_Square, this.Position) >= (float)this.m_Field_Radius - 1.5f)
+        //            {
+        //                this.CellsToProtect.Add(_Square);
+        //            }
+        //        }
+        //    }
+        //    //this.m_CellsToProtect
+        //    //if (Vectors.VectorSize(square) >= (float)this.m_shieldShieldRadius - 1.5f)
+        //}
 
         /// <summary>
         /// Finds all projectiles at the position and destroys them
@@ -762,10 +762,10 @@ namespace EnhancedDevelopment.Shields.Basic
 
             if (this.m_StructuralIntegrityMode)
             {
-                foreach (IntVec3 _Square in this.CellsToProtect)
-                {
-                    DrawSubField(Vectors.IntVecToVec(_Square), 0.8f);
-                }
+                //foreach (IntVec3 _Square in this.CellsToProtect)
+                //{
+                //    DrawSubField(Vectors.IntVecToVec(_Square), 0.8f);
+                //}
             }
             else
             {
