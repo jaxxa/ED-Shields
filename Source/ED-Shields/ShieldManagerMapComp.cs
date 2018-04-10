@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnhancedDevelopment.Shields.Basic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,12 @@ namespace EnhancedDevelopment.Shields.Basic
                 Log.Message("Shield:" + x.Position.ToVector3());
 
                 Log.Message("Distance: " + _Distance.ToString());
-                return _Distance <= x.m_Field_Radius;
+
+                if (_Distance <= x.m_Field_Radius)
+                {
+                    return this.CorrectAngleToIntercept(projectile, x);
+                }
+                return false;
             }))
             {
                 Log.Message("Blocked");
@@ -51,5 +57,27 @@ namespace EnhancedDevelopment.Shields.Basic
         }
 
 
+        public Boolean CorrectAngleToIntercept(Projectile pr, Building_Shield shieldBuilding)
+        {
+            //Detect proper collision using angles
+            Quaternion targetAngle = pr.ExactRotation;
+
+            Vector3 projectilePosition2D = pr.ExactPosition;
+            projectilePosition2D.y = 0;
+
+            Vector3 shieldPosition2D = shieldBuilding.Position.ToVector3();
+            shieldPosition2D.y = 0;
+
+            Quaternion shieldProjAng = Quaternion.LookRotation(projectilePosition2D - shieldPosition2D);
+
+            if ((Quaternion.Angle(targetAngle, shieldProjAng) > 90))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
+
