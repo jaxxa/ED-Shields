@@ -9,9 +9,9 @@ using RimWorld;
 using Verse;
 using Verse.Sound;
 
-using EnhancedDevelopment.Shields.Basic.ShieldUtils;
+using EnhancedDevelopment.Shields.ShieldUtils;
 
-namespace EnhancedDevelopment.Shields.Basic
+namespace EnhancedDevelopment.Shields
 {
     [StaticConstructorOnStartup]
     public class Building_Shield : Building
@@ -818,7 +818,7 @@ namespace EnhancedDevelopment.Shields.Basic
                 currentMatrialColour = SolidColorMaterials.NewSolidColorMaterial(new Color(m_ColourRed, m_ColourGreen, m_ColourBlue, 0.15f), ShaderDatabase.MetaOverlay);
             }
 
-            UnityEngine.Graphics.DrawMesh(EnhancedDevelopment.Shields.Basic.ShieldUtils.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
+            UnityEngine.Graphics.DrawMesh(EnhancedDevelopment.Shields.ShieldUtils.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
 
         }
 

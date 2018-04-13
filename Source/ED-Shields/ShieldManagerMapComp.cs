@@ -1,4 +1,4 @@
-﻿using EnhancedDevelopment.Shields.Basic;
+﻿using EnhancedDevelopment.Shields;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace EnhancedDevelopment.Shields.Basic
+namespace EnhancedDevelopment.Shields
 {
     [StaticConstructorOnStartup]
     class ShieldManagerMapComp : MapComponent

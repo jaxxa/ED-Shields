@@ -1,4 +1,4 @@
-﻿using EnhancedDevelopment.Shields.Basic;
+﻿using EnhancedDevelopment.Shields;
 using Harmony;
 using System;
 using System.Collections.Generic;

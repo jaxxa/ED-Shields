@@ -5,7 +5,7 @@ using System.Text;
 using System.Reflection;
 using Verse;
 
-namespace EnhancedDevelopment.Shields.Basic.ShieldUtils
+namespace EnhancedDevelopment.Shields.ShieldUtils
 {
     public class ReflectionHelper
     {

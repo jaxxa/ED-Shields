@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 
-namespace EnhancedDevelopment.Shields.Basic
+namespace EnhancedDevelopment.Shields
 {
 
     public class CompProperties_ShieldBuilding : CompProperties
