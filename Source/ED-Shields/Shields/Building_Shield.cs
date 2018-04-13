@@ -27,10 +27,6 @@ namespace EnhancedDevelopment.Shields
 
         #region Constants
 
-        private const int DAMAGE_TO_FIRE = 10;
-        private const int DAMAGE_FROM_FIRE = 2;
-        private const int FIRE_SUPRESSION_TICK_DELAY = 15;
-
         #endregion
 
         #region Variables
@@ -42,34 +38,23 @@ namespace EnhancedDevelopment.Shields
         private static Texture2D UI_INDIRECT_ON;
         private static Texture2D UI_INDIRECT_OFF;
 
-        private static Texture2D UI_FIRE_ON;
-        private static Texture2D UI_FIRE_OFF;
-
         private static Texture2D UI_INTERCEPT_DROPPOD_ON;
         private static Texture2D UI_INTERCEPT_DROPPOD_OFF;
-
-        private static Texture2D UI_REPAIR_ON;
-        private static Texture2D UI_REPAIR_OFF;
-
+        
         private static Texture2D UI_SHOW_ON;
         private static Texture2D UI_SHOW_OFF;
 
         //Default all flasgs to be shown initially
         protected bool m_BlockIndirect_Active = true;
         protected bool m_BlockDirect_Active = true;
-        protected bool m_FireSupression_Active = true;
-        protected bool m_RepairMode_Active = true;
         protected bool m_ShowVisually_Active = true;
         protected bool m_InterceptDropPod_Active = true;
 
         //Variables to store what modes the shield have avalable.
         protected bool m_BlockIndirect_Avalable;
         protected bool m_BlockDirect_Avalable;
-        protected bool m_FireSupression_Avalable;
         protected bool m_InterceptDropPod_Avalable;
-
-        protected bool m_StructuralIntegrityMode;
-
+        
         //variables that are read in from XML
         private int m_FieldIntegrity_Max;
         private int m_FieldIntegrity_Initial;
@@ -84,15 +69,11 @@ namespace EnhancedDevelopment.Shields
         private float m_ColourRed;
         private float m_ColourGreen;
         private float m_ColourBlue;
-
-        private List<string> m_SIFBuildings;
-
+        
         private int m_WarmupTicksRemaining = 0;
         private long m_TickCount = 0;
 
         CompPowerTrader m_Power;
-        //Prepared data
-        private ShieldBlendingParticle[] m_SparksParticle = new ShieldBlendingParticle[3];
 
         #endregion
 
@@ -145,25 +126,6 @@ namespace EnhancedDevelopment.Shields
         }
         private int m_FieldIntegrity_Current;
 
-        //List of squares around the shield centre
-
-        //List<IntVec3> CellsToProtect
-        //{
-        //    get
-        //    {
-        //        if (this.m_CellsToProtect == null)
-        //        {
-        //            this.ReCalibrateCells();
-        //        }
-        //        return this.m_CellsToProtect;
-        //    }
-        //    set
-        //    {
-        //        this.m_CellsToProtect = value;
-        //    }
-        //}
-        //List<IntVec3> m_CellsToProtect = null;
-
         #endregion
 
         #region Initilisation
@@ -177,14 +139,9 @@ namespace EnhancedDevelopment.Shields
             UI_DIRECT_ON = ContentFinder<Texture2D>.Get("UI/DirectOn", true);
             UI_INDIRECT_OFF = ContentFinder<Texture2D>.Get("UI/IndirectOff", true);
             UI_INDIRECT_ON = ContentFinder<Texture2D>.Get("UI/IndirectOn", true);
-            UI_FIRE_OFF = ContentFinder<Texture2D>.Get("UI/FireOff", true);
-            UI_FIRE_ON = ContentFinder<Texture2D>.Get("UI/FireOn", true);
             UI_INTERCEPT_DROPPOD_OFF = ContentFinder<Texture2D>.Get("UI/FireOff", true);
             UI_INTERCEPT_DROPPOD_ON = ContentFinder<Texture2D>.Get("UI/FireOn", true);
-
-            UI_REPAIR_ON = ContentFinder<Texture2D>.Get("UI/RepairOn", true);
-            UI_REPAIR_OFF = ContentFinder<Texture2D>.Get("UI/RepairOff", true);
-
+            
             UI_SHOW_ON = ContentFinder<Texture2D>.Get("UI/ShieldShowOn", true);
             UI_SHOW_OFF = ContentFinder<Texture2D>.Get("UI/ShieldShowOff", true);
         }
@@ -222,17 +179,13 @@ namespace EnhancedDevelopment.Shields
 
                 m_BlockIndirect_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_BlockIndirect_Avalable;
                 m_BlockDirect_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_BlockDirect_Avalable;
-                m_FireSupression_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_FireSupression_Avalable;
                 m_InterceptDropPod_Avalable = ((CompProperties_ShieldBuilding)_CompShield.props).m_InterceptDropPod_Avalable;
-
-                m_StructuralIntegrityMode = ((CompProperties_ShieldBuilding)_CompShield.props).m_StructuralIntegrityMode;
+                
 
                 m_ColourRed = ((CompProperties_ShieldBuilding)_CompShield.props).m_ColourRed;
                 m_ColourGreen = ((CompProperties_ShieldBuilding)_CompShield.props).m_ColourGreen;
                 m_ColourBlue = ((CompProperties_ShieldBuilding)_CompShield.props).m_ColourBlue;
 
-                m_SIFBuildings = ((CompProperties_ShieldBuilding)_CompShield.props).SIFBuildings;
-                //Log.Error("Count:" + SIFBuildings.Count);
             }
             else
             {
@@ -249,21 +202,7 @@ namespace EnhancedDevelopment.Shields
             this.m_TickCount += 1;
 
             this.UpdateShieldStatus();
-
-            //Disable shield when power goes off
-
-            ////Do tick for the shield field
-
-            //if (this.IsActive())
-            //{
-            //    this.TickProtection();
-
-            //    if (this.m_TickCount % 5000 == 0)
-            //    {
-            //        this.ReCalibrateCells();
-            //    }
-            //}
-
+            
             this.TickRecharge();
         }
 
@@ -371,33 +310,10 @@ namespace EnhancedDevelopment.Shields
                     break;
             }
         }
-
-        //public void TickProtection()
-        //{
-
-        //    foreach (IntVec3 square in this.CellsToProtect)
-        //    {
-        //        //Only use squares around, not inside
-        //        this.ProtectSquare(square);
-
-        //        if (this.m_StructuralIntegrityMode)
-        //        {
-        //            this.SupressFire(square);
-        //            this.RepairSytem(square);
-        //        }
-        //    }
-
-        //    if (!this.m_StructuralIntegrityMode)
-        //    {
-        //        this.SupressFire();
-        //    }
-
-        //    this.interceptPods();
-        //}
-
+        
         public void TickRecharge()
         {
-            if (this.m_TickCount % this.m_RechargeTickDelayInterval == 0)
+            if (Find.TickManager.TicksGame % this.m_RechargeTickDelayInterval == 0)
             {
                 if (this.CurrentStatus == enumShieldStatus.ActiveCharging)
                 {
@@ -409,54 +325,7 @@ namespace EnhancedDevelopment.Shields
                 }
             }
         }
-
-        //public void ReCalibrateCells()
-        //{
-        //    //Log.Message("Recalibrate");
-        //    this.CellsToProtect = new List<IntVec3>();
-
-        //    if (this.m_StructuralIntegrityMode)
-        //    {
-        //        IEnumerable<IntVec3> _AllSquares = GenRadial.RadialCellsAround(this.Position, this.m_Field_Radius, false);
-
-        //        foreach (IntVec3 _Square in _AllSquares)
-        //        {
-        //            // Log.Message("Testing:" + _Square.ToString());
-        //            List<Thing> _Things = this.Map.thingGrid.ThingsListAt(_Square);
-
-        //            for (int i = 0, l = _Things.Count(); i < l; i++)
-        //            {
-        //                if (_Things[i] is Building)
-        //                {
-        //                    Building building = (Building)_Things[i];
-
-        //                    if (isBuildingValid(building))
-        //                    {
-        //                        this.CellsToProtect.Add(_Square);
-        //                        i = int.MaxValue - 1;
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        IEnumerable<IntVec3> _AllSquares = GenRadial.RadialCellsAround(this.Position, this.m_Field_Radius, false);
-
-        //        foreach (IntVec3 _Square in _AllSquares)
-        //        {
-        //            //if (Vectors.VectorSize(_Square) >= (float)this.m_Field_Radius - 1.5f)
-        //            if (Vectors.EuclDist(_Square, this.Position) >= (float)this.m_Field_Radius - 1.5f)
-        //            {
-        //                this.CellsToProtect.Add(_Square);
-        //            }
-        //        }
-        //    }
-        //    //this.m_CellsToProtect
-        //    //if (Vectors.VectorSize(square) >= (float)this.m_shieldShieldRadius - 1.5f)
-        //}
-
+        
         /// <summary>
         /// Finds all projectiles at the position and destroys them
         /// </summary>
@@ -472,7 +341,6 @@ namespace EnhancedDevelopment.Shields
             }
             List<Thing> things = this.Map.thingGrid.ThingsListAt(square);
             List<Thing> thingsToDestroy = new List<Thing>();
-            Boolean _IFFCheck = this.m_StructuralIntegrityMode;
 
             for (int i = 0, l = things.Count(); i < l; i++)
             {
@@ -484,29 +352,6 @@ namespace EnhancedDevelopment.Shields
                     if (!pr.Destroyed && ((this.m_BlockIndirect_Avalable && this.m_BlockDirect_Active && pr.def.projectile.flyOverhead) || (this.m_BlockDirect_Avalable && this.m_BlockIndirect_Active && !pr.def.projectile.flyOverhead)))
                     {
                         bool wantToIntercept = true;
-
-                        //Check IFF
-                        if (_IFFCheck == true)
-                        {
-                            //Log.Message("IFFcheck == true");
-                            Thing launcher = ReflectionHelper.GetInstanceField(typeof(Projectile), pr, "launcher") as Thing;
-
-                            if (launcher != null)
-                            {
-                                if (launcher.Faction != null)
-                                {
-                                    //Log.Message("launcher != null");
-                                    if (launcher.Faction.IsPlayer)
-                                    {
-                                        wantToIntercept = false;
-                                    }
-                                    else
-                                    {
-
-                                    }
-                                }
-                            }
-                        }
 
                         //Check OverShoot
                         if (pr.def.projectile.flyOverhead)
@@ -605,23 +450,6 @@ namespace EnhancedDevelopment.Shields
             return reoveredVector;
         }
 
-        public bool isBuildingValid(Thing currentBuilding)
-        {
-            if (this.m_SIFBuildings != null)
-            {
-                if (this.m_SIFBuildings.Contains(currentBuilding.def.defName))
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                Log.Error("ShieldField.validBuildings Not set up properly");
-            }
-
-            return false;
-        }
-
         private void interceptPods()
         {
             if (this.m_InterceptDropPod_Avalable && this.m_InterceptDropPod_Active)
@@ -658,88 +486,6 @@ namespace EnhancedDevelopment.Shields
             }
         }
 
-        private void SupressFire()
-        {
-            if (this.m_FireSupression_Avalable && this.m_FireSupression_Active && (this.m_TickCount % FIRE_SUPRESSION_TICK_DELAY == 0))
-            //if (this.m_FireSupression_Avalable && this.m_FireSupression_Active)
-            {
-                IEnumerable<Thing> fires = this.Map.listerThings.ThingsOfDef(ThingDefOf.Fire);
-
-                if (fires != null)
-                {
-                    IEnumerable<Thing> closeFires = fires.Where<Thing>(t => t.Position.InHorDistOf(this.Position, this.m_Field_Radius));
-
-                    if (closeFires != null)
-                    {
-                        //List<Thing> fireTo
-                        foreach (Fire currentFire in closeFires.ToList())
-                        {
-                            if (this.FieldIntegrity_Current > DAMAGE_FROM_FIRE)
-                            {
-                                //Damage the shield
-                                ProcessDamage(DAMAGE_FROM_FIRE);
-
-                                currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE, -1, this));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private void SupressFire(IntVec3 position)
-        {
-            if (this.m_FireSupression_Avalable && this.m_FireSupression_Active && (this.m_TickCount % FIRE_SUPRESSION_TICK_DELAY == 0))
-            //if (this.m_FireSupression_Avalable && this.m_FireSupression_Active)
-            {
-                IEnumerable<Thing> things = this.Map.thingGrid.ThingsAt(position);
-                List<Thing> fires = new List<Thing>();
-
-                foreach (Thing currentThing in things)
-                {
-                    if (currentThing is Fire)
-                    {
-                        fires.Add(currentThing);
-                    }
-                }
-
-                foreach (Fire currentFire in fires.ToList())
-                {
-                    if (this.FieldIntegrity_Current > DAMAGE_FROM_FIRE)
-                    {
-                        //Damage the shield
-                        ProcessDamage(DAMAGE_FROM_FIRE);
-
-                        currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE, -1, this));
-                    }
-                }
-            }
-        }
-
-        private void RepairSytem(IntVec3 position)
-        {
-            if (this.m_RepairMode_Active)
-            {
-                List<Thing> things = this.Map.thingGrid.ThingsListAt(position);
-
-                foreach (Thing thing in things)
-                {
-                    if (thing is Building)
-                    {
-                        if (thing.HitPoints < thing.MaxHitPoints)
-                        {
-                            if (this.FieldIntegrity_Current > 1)
-                            {
-                                //Damage the shield
-                                ProcessDamage(1);
-
-                                thing.HitPoints += 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
         #endregion
 
         #region Drawing
@@ -760,32 +506,9 @@ namespace EnhancedDevelopment.Shields
                 return;
             }
 
-            if (this.m_StructuralIntegrityMode)
-            {
-                //foreach (IntVec3 _Square in this.CellsToProtect)
-                //{
-                //    DrawSubField(Vectors.IntVecToVec(_Square), 0.8f);
-                //}
-            }
-            else
-            {
-                //Draw field
-                this.DrawField(Vectors.IntVecToVec(base.Position));
-            }
+            //Draw field
+            this.DrawField(Vectors.IntVecToVec(base.Position));
 
-            //Initialize the spark particle array
-            if (m_SparksParticle[0] == null)
-            {
-                for (int i = 0; i < m_SparksParticle.Length; i++)
-                {
-                    m_SparksParticle[i] = new ShieldBlendingParticle(this.DrawPos, (int)Math.Round(((float)i / (float)(m_SparksParticle.Length - 1)) * (float)ShieldBlendingParticle.transitionMax));
-                }
-            }
-            //Animate spark particles
-            for (int i = 0, l = m_SparksParticle.Length; i < l; i++)
-            {
-                m_SparksParticle[i].DrawMe();
-            }
         }
 
         public override void DrawExtraSelectionOverlays()
@@ -936,39 +659,7 @@ namespace EnhancedDevelopment.Shields
                     yield return act;
                 }
             }
-
-            if (m_FireSupression_Avalable)
-            {
-                if (m_FireSupression_Active)
-                {
-
-                    Command_Action act = new Command_Action();
-                    //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
-                    act.action = () => this.SwitchFire();
-                    act.icon = UI_INDIRECT_ON;
-                    act.defaultLabel = "Fire Suppression";
-                    act.defaultDesc = "On";
-                    act.activateSound = SoundDef.Named("Click");
-                    //act.hotKey = KeyBindingDefOf.DesignatorDeconstruct;
-                    //act.groupKey = 689736;
-                    yield return act;
-                }
-                else
-                {
-
-                    Command_Action act = new Command_Action();
-                    //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
-                    act.action = () => this.SwitchFire();
-                    act.icon = UI_INDIRECT_OFF;
-                    act.defaultLabel = "Fire Suppression";
-                    act.defaultDesc = "Off";
-                    act.activateSound = SoundDef.Named("Click");
-                    //act.hotKey = KeyBindingDefOf.DesignatorDeconstruct;
-                    //act.groupKey = 689736;
-                    yield return act;
-                }
-            }
-
+            
             if (m_InterceptDropPod_Avalable)
             {
                 if (m_InterceptDropPod_Active)
@@ -1000,40 +691,7 @@ namespace EnhancedDevelopment.Shields
                     yield return act;
                 }
             }
-
-
-            if (m_StructuralIntegrityMode)
-            {
-                if (m_RepairMode_Active)
-                {
-
-                    Command_Action act = new Command_Action();
-                    //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
-                    act.action = () => this.SwitchShieldRepairMode();
-                    act.icon = UI_REPAIR_ON;
-                    act.defaultLabel = "Repair Mode";
-                    act.defaultDesc = "On";
-                    act.activateSound = SoundDef.Named("Click");
-                    //act.hotKey = KeyBindingDefOf.DesignatorDeconstruct;
-                    //act.groupKey = 689736;
-                    yield return act;
-                }
-                else
-                {
-
-                    Command_Action act = new Command_Action();
-                    //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
-                    act.action = () => this.SwitchShieldRepairMode();
-                    act.icon = UI_REPAIR_OFF;
-                    act.defaultLabel = "Repair Mode";
-                    act.defaultDesc = "Off";
-                    act.activateSound = SoundDef.Named("Click");
-                    //act.hotKey = KeyBindingDefOf.DesignatorDeconstruct;
-                    //act.groupKey = 689736;
-                    yield return act;
-                }
-            }
-
+                       
 
             if (true)
             {
@@ -1080,11 +738,6 @@ namespace EnhancedDevelopment.Shields
             m_BlockDirect_Active = !m_BlockDirect_Active;
         }
 
-        private void SwitchFire()
-        {
-            m_FireSupression_Active = !m_FireSupression_Active;
-        }
-
         private void SwitchInterceptDropPod()
         {
             m_InterceptDropPod_Active = !m_InterceptDropPod_Active;
@@ -1093,11 +746,6 @@ namespace EnhancedDevelopment.Shields
         private void SwitchVisual()
         {
             m_ShowVisually_Active = !m_ShowVisually_Active;
-        }
-
-        private void SwitchShieldRepairMode()
-        {
-            m_RepairMode_Active = !m_RepairMode_Active;
         }
 
         #endregion
@@ -1113,18 +761,13 @@ namespace EnhancedDevelopment.Shields
 
             Scribe_Values.Look(ref m_BlockIndirect_Active, "m_BlockIndirect_Active");
             Scribe_Values.Look(ref m_BlockDirect_Active, "m_BlockDirect_Active");
-            Scribe_Values.Look(ref m_FireSupression_Active, "m_FireSupression_Active");
-            Scribe_Values.Look(ref m_RepairMode_Active, "m_RepairMode_Active");
             Scribe_Values.Look(ref m_ShowVisually_Active, "m_ShowVisually_Active");
             Scribe_Values.Look(ref m_InterceptDropPod_Active, "m_InterceptDropPod_Active");
 
             Scribe_Values.Look(ref m_BlockIndirect_Avalable, "m_BlockIndirect_Avalable");
             Scribe_Values.Look(ref m_BlockDirect_Avalable, "m_BlockDirect_Avalable");
-            Scribe_Values.Look(ref m_FireSupression_Avalable, "m_FireSupression_Avalable");
             Scribe_Values.Look(ref m_InterceptDropPod_Avalable, "m_InterceptDropPod_Avalable");
-
-            Scribe_Values.Look(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
-
+            
             Scribe_Values.Look(ref m_FieldIntegrity_Max, "m_FieldIntegrity_Max");
             Scribe_Values.Look(ref m_FieldIntegrity_Initial, "m_FieldIntegrity_Initial");
             Scribe_Values.Look(ref m_Field_Radius, "m_Field_Radius");
@@ -1134,8 +777,6 @@ namespace EnhancedDevelopment.Shields
 
             Scribe_Values.Look(ref m_RechargeTickDelayInterval, "m_shieldRechargeTickDelay");
             Scribe_Values.Look(ref m_RecoverWarmupDelayTicks, "m_shieldRecoverWarmup");
-            Scribe_Values.Look(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
-            Scribe_Values.Look(ref m_StructuralIntegrityMode, "m_StructuralIntegrityMode");
 
             Scribe_Values.Look(ref m_ColourRed, "m_colourRed");
             Scribe_Values.Look(ref m_ColourGreen, "m_colourGreen");

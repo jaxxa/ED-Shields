@@ -55,6 +55,7 @@
     <Compile Include="Patches\PatchProjectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShieldManagerMapComp.cs" />
+    <Compile Include="Shields\Building_Backup.cs" />
     <Compile Include="Shields\Building_Shield.cs" />
     <Compile Include="Shields\Comp_ShieldBuilding.cs" />
     <Compile Include="Shields\enumShieldStatus.cs" />
