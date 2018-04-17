@@ -447,8 +447,8 @@ namespace EnhancedDevelopment.Shields.Basic
 
                 foreach (IntVec3 _Square in _AllSquares)
                 {
-                    //if (Vectors.VectorSize(_Square) >= (float)this.m_Field_Radius - 1.5f)
-                    if (Vectors.EuclDist(_Square, this.Position) >= (float)this.m_Field_Radius - 1.5f)
+                    //if (Vectors.EuclDist(_Square, this.Position) >= (float)this.m_Field_Radius - 1.5f)
+                    if (Vectors.EuclDist(_Square, this.Position) >= (float)this.m_Field_Radius - 3.5f) //Increaded from 1.5 to 2.5 because CE Guns are faster.
                     {
                         this.CellsToProtect.Add(_Square);
                     }
