@@ -79,3 +79,6 @@ This is a Special type of Shield that specifically covers certain building inste
 
 0.18.0.1
 * Increased Documentation.
+
+0.19.0.0
+ * Update to B19
