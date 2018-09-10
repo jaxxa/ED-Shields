@@ -609,7 +609,7 @@ namespace EnhancedDevelopment.Shields.Basic
         {
             if (this.m_SIFBuildings != null)
             {
-                if (this.m_SIFBuildings.Contains(currentBuilding.def.defName))
+                if (this.m_SIFBuildings.Any(b =>  currentBuilding.def.defName.Contains(b)))
                 {
                     return true;
                 }
