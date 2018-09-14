@@ -547,7 +547,7 @@ namespace EnhancedDevelopment.Shields.Basic
                                 HitSoundDef.PlayOneShot((SoundInfo)new TargetInfo(this.Position, this.Map, false));
 
                                 //Damage the shield
-                                ProcessDamage(pr.def.projectile.damageAmountBase);
+                                ProcessDamage(pr.DamageAmount);
                                 //add projectile to the list of things to be destroyed
                                 thingsToDestroy.Add(pr);
                             }
@@ -609,7 +609,7 @@ namespace EnhancedDevelopment.Shields.Basic
         {
             if (this.m_SIFBuildings != null)
             {
-                if (this.m_SIFBuildings.Contains(currentBuilding.def.defName))
+                if (this.m_SIFBuildings.Any(b =>  currentBuilding.def.defName.Contains(b)))
                 {
                     return true;
                 }
@@ -679,7 +679,7 @@ namespace EnhancedDevelopment.Shields.Basic
                                 //Damage the shield
                                 ProcessDamage(DAMAGE_FROM_FIRE);
 
-                                currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE, -1, this));
+                                currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE,0, -1, this));
                             }
                         }
                     }
@@ -710,7 +710,7 @@ namespace EnhancedDevelopment.Shields.Basic
                         //Damage the shield
                         ProcessDamage(DAMAGE_FROM_FIRE);
 
-                        currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE, -1, this));
+                        currentFire.TakeDamage(new DamageInfo(DamageDefOf.Extinguish, DAMAGE_TO_FIRE,0 , -1,this));
                     }
                 }
             }

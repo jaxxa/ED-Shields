@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-	<ThingDef Name="BuildingBase" Abstract="True">
-		<category>Building</category>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
-	</ThingDef>
-
 	<ThingDef ParentName="BuildingBase" Name="ShieldBase" Abstract="True">
 		<category>Building</category>
 		<thingClass>EnhancedDevelopment.Shields.Basic.Building_Shield</thingClass>
@@ -36,7 +25,7 @@
 		<costList>
 			<Steel>100</Steel>
 			<Silver>100</Silver>
-			<Component>15</Component>
+			<ComponentIndustrial>15</ComponentIndustrial>
 		</costList>
 		<passability>Impassable</passability>
 		<selectable>true</selectable>
@@ -90,6 +79,7 @@
 		</comps>
 	</ThingDef>
 
+	
 	<ThingDef ParentName="ShieldBase">
 		<defName>Building_ShieldSmall</defName>
 		<label>Small shield</label>
@@ -107,7 +97,7 @@
 		<costList>
 			<Steel>75</Steel>
 			<Silver>50</Silver>
-			<Component>8</Component>
+			<ComponentIndustrial>8</ComponentIndustrial>
 		</costList>
 		<comps>
 			<li Class="CompProperties_Power">
@@ -189,7 +179,7 @@
 		<costList>
 			<Steel>200</Steel>
 			<Silver>100</Silver>
-			<Component>20</Component>
+			<ComponentIndustrial>20</ComponentIndustrial>
 		</costList>
 
 		<size>(2,2)</size>
@@ -249,4 +239,5 @@
 		</comps>	
 	</ThingDef>
 
+	
 </Defs>
