@@ -88,3 +88,4 @@ This is a Special type of Shield that specifically covers certain building inste
  
 1.0.0.0
  * Update to 1.0
+ * Some UI images from "Operative85" on the ludeon Forums

@@ -179,8 +179,8 @@ namespace EnhancedDevelopment.Shields.Basic
             UI_INDIRECT_ON = ContentFinder<Texture2D>.Get("UI/IndirectOn", true);
             UI_FIRE_OFF = ContentFinder<Texture2D>.Get("UI/FireOff", true);
             UI_FIRE_ON = ContentFinder<Texture2D>.Get("UI/FireOn", true);
-            UI_INTERCEPT_DROPPOD_OFF = ContentFinder<Texture2D>.Get("UI/FireOff", true);
-            UI_INTERCEPT_DROPPOD_ON = ContentFinder<Texture2D>.Get("UI/FireOn", true);
+            UI_INTERCEPT_DROPPOD_OFF = ContentFinder<Texture2D>.Get("UI/InterceptDropOff", true);
+            UI_INTERCEPT_DROPPOD_ON = ContentFinder<Texture2D>.Get("UI/InterceptDropOn", true);
 
             UI_REPAIR_ON = ContentFinder<Texture2D>.Get("UI/RepairOn", true);
             UI_REPAIR_OFF = ContentFinder<Texture2D>.Get("UI/RepairOff", true);
@@ -945,7 +945,7 @@ namespace EnhancedDevelopment.Shields.Basic
                     Command_Action act = new Command_Action();
                     //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
                     act.action = () => this.SwitchFire();
-                    act.icon = UI_INDIRECT_ON;
+                    act.icon = UI_FIRE_ON;
                     act.defaultLabel = "Fire Suppression";
                     act.defaultDesc = "On";
                     act.activateSound = SoundDef.Named("Click");
@@ -959,7 +959,7 @@ namespace EnhancedDevelopment.Shields.Basic
                     Command_Action act = new Command_Action();
                     //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
                     act.action = () => this.SwitchFire();
-                    act.icon = UI_INDIRECT_OFF;
+                    act.icon = UI_FIRE_OFF;
                     act.defaultLabel = "Fire Suppression";
                     act.defaultDesc = "Off";
                     act.activateSound = SoundDef.Named("Click");
