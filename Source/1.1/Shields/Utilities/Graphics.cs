@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace EnhancedDevelopment.Shields.Basic.ShieldUtils
+namespace EnhancedDevelopment.Prometheus.Shields.Utilities
 {
     public static class Graphics
     {
@@ -56,14 +56,6 @@ namespace EnhancedDevelopment.Shields.Basic.ShieldUtils
                 }
             }
         }
-
-        /*
-        public static Material SolidColorMaterial(Color color)
-        {
-            //return GenRender.SolidColorMaterial(color);
-            return MaterialMaker.NewSolidColorMaterial(color);
-        }*/
-
-        //GenRender.SolidColorMaterial(Color.white);
+        
     }
 }

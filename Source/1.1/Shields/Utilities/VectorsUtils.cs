@@ -5,9 +5,9 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace EnhancedDevelopment.Shields.Basic.ShieldUtils
+namespace EnhancedDevelopment.Prometheus.Shields.Utilities
 {
-    public class Vectors
+    class VectorsUtils
     {
         public static double EuclDist(IntVec3 a, IntVec3 b)
         {
@@ -44,9 +44,8 @@ namespace EnhancedDevelopment.Shields.Basic.ShieldUtils
 
         public static IntVec3 VecToIntVec(Vector3 from)
         {
-            return new IntVec3( (int)from.x, (int)from.y, (int)from.z);
+            return new IntVec3((int)from.x, (int)from.y, (int)from.z);
         }
-
 
     }
 }

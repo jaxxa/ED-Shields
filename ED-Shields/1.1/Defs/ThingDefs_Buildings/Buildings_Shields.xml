@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-	<ThingDef ParentName="BuildingBase" Name="ShieldBase" Abstract="True">
-		<category>Building</category>
-		<thingClass>EnhancedDevelopment.Shields.Basic.Building_Shield</thingClass>
+	<!-- Shield Building -->
+
+	<ThingDef ParentName="EDSN_BuildingBase">
+		<defName>Building_ShieldGenerator</defName>
+		<label>Shield Generator</label>
+		<description>Creates a Shield designed to protect critical ground installations. Can be upgraded with various enhancement modules.</description>
+		<thingClass>EnhancedDevelopment.Prometheus.Shields.Building_Shield</thingClass>
+		<researchPrerequisites>
+			<li>ED_Prometheus_Shields_1_Research</li>
+		</researchPrerequisites>
+		<graphicData>
+			<texPath>Things/ShieldBuilding_Blue</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+
+		<uiIconPath>Things/ShieldBuilding_Blue</uiIconPath>
 		<altitudeLayer>Building</altitudeLayer>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<blockLight>true</blockLight>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<fillPercent>1</fillPercent>
-		<size>(1,1)</size>
+		<size>(3,3)</size>
 		<rotatable>false</rotatable>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<designationCategory>Security</designationCategory>
@@ -21,30 +35,19 @@
 			<WorkToBuild>2000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 			<Beauty>-2</Beauty>
+			<Mass>50</Mass>
 		</statBases>
 		<costList>
 			<Steel>100</Steel>
 			<Silver>100</Silver>
-			<ComponentIndustrial>15</ComponentIndustrial>
+			<ComponentSpacer>15</ComponentSpacer>
 		</costList>
+		<inspectorTabs>
+			<li>EnhancedDevelopment.Prometheus.Shields.ITab_ShieldGenerator</li>
+		</inspectorTabs>
 		<passability>Impassable</passability>
 		<selectable>true</selectable>
 		<tickerType>Normal</tickerType>
-	</ThingDef>
-
-	<ThingDef ParentName="ShieldBase">
-		<defName>Building_ShieldStandard</defName>
-		<label>Standard Shield</label>
-		<description>Creates shield field to protect important infrastructure.</description>
-		<researchPrerequisites>
-			<li>Building_ShieldStandard_research</li>
-		</researchPrerequisites>
-		<graphicData>
-			<texPath>Things/ShieldBuilding_Blue</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(1,1)</drawSize>
-		</graphicData>
-		<uiIconPath>Things/ShieldBuilding_Blue</uiIconPath>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -52,192 +55,160 @@
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_Facility">
+				<maxSimultaneous>1</maxSimultaneous>
+			</li>
+			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldGenerator">
 
-			<li Class="EnhancedDevelopment.Shields.Basic.CompProperties_ShieldBuilding">
-
-				<m_FieldIntegrity_Max>4000</m_FieldIntegrity_Max>
 				<m_FieldIntegrity_Initial>100</m_FieldIntegrity_Initial>
-				<m_Field_Radius>8</m_Field_Radius>
+				<m_FieldIntegrity_Max_Base>2000</m_FieldIntegrity_Max_Base>
+				<m_Field_Radius_Base>8</m_Field_Radius_Base>
 
-				<m_PowerRequiredCharging>-1500</m_PowerRequiredCharging>
-				<m_PowerRequiredSustaining>-1000</m_PowerRequiredSustaining>
+				<m_PowerRequired_Charging>1500</m_PowerRequired_Charging>
+				<m_PowerRequired_Standby>1000</m_PowerRequired_Standby>
+
+
+				<m_RechargeTickDelayInterval_Base>15</m_RechargeTickDelayInterval_Base>
+				<m_RechargeAmmount_Base>1</m_RechargeAmmount_Base>
+				<m_RecoverWarmupDelayTicks_Base>900</m_RecoverWarmupDelayTicks_Base>
 
 				<m_BlockIndirect_Avalable>true</m_BlockIndirect_Avalable>
 				<m_BlockDirect_Avalable>true</m_BlockDirect_Avalable>
-				<m_FireSupression_Avalable>true</m_FireSupression_Avalable>
 				<m_InterceptDropPod_Avalable>false</m_InterceptDropPod_Avalable>
-
 				<m_StructuralIntegrityMode>false</m_StructuralIntegrityMode>
 
-				<m_RechargeTickDelayInterval>15</m_RechargeTickDelayInterval>
-				<m_RecoverWarmupDelayTicks>900</m_RecoverWarmupDelayTicks>
-
-				<m_ColourRed>0.0</m_ColourRed>
-				<m_ColourGreen>0.3764705882352941</m_ColourGreen>
-				<m_ColourBlue>0.7294117647058823</m_ColourBlue>
 			</li>
 		</comps>
 	</ThingDef>
 
-	
-	<ThingDef ParentName="ShieldBase">
-		<defName>Building_ShieldSmall</defName>
-		<label>Small shield</label>
-		<description>Creates a smaller shield that allows people to stand on it.</description>
-		<researchPrerequisites>
-			<li>Building_ShieldSmall_research</li>
-		</researchPrerequisites>
+
+	<!-- Shield Upgrades -->
+
+
+	<ThingDef Name="ShieldModuleBase" ParentName="EDSN_BuildingBase" Abstract="True">
+		<defName>ShieldUpgrade</defName>
+		<label>ShieldUpgrade</label>
+		<thingClass>Building</thingClass>
+		<description>Upgrades Shields.</description>
 		<graphicData>
-			<texPath>Things/ShieldBuilding_Small_Blue</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(1,1)</drawSize>
-		</graphicData>
-		<uiIconPath>Things/ShieldBuilding_Small_Blue</uiIconPath>
-		<passability>Standable</passability>
-		<costList>
-			<Steel>75</Steel>
-			<Silver>50</Silver>
-			<ComponentIndustrial>8</ComponentIndustrial>
-		</costList>
-		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>1000</basePowerConsumption>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="EnhancedDevelopment.Shields.Basic.CompProperties_ShieldBuilding">
-				<m_FieldIntegrity_Max>2000</m_FieldIntegrity_Max>
-				<m_FieldIntegrity_Initial>100</m_FieldIntegrity_Initial>
-				<m_Field_Radius>2</m_Field_Radius>
-
-				<m_PowerRequiredCharging>-1000</m_PowerRequiredCharging>
-				<m_PowerRequiredSustaining>-500</m_PowerRequiredSustaining>
-
-				<m_BlockIndirect_Avalable>true</m_BlockIndirect_Avalable>
-				<m_BlockDirect_Avalable>true</m_BlockDirect_Avalable>
-				<m_FireSupression_Avalable>true</m_FireSupression_Avalable>
-				<m_InterceptDropPod_Avalable>false</m_InterceptDropPod_Avalable>
-
-				<m_StructuralIntegrityMode>false</m_StructuralIntegrityMode>
-
-				<m_RechargeTickDelayInterval>15</m_RechargeTickDelayInterval>
-				<m_RecoverWarmupDelayTicks>900</m_RecoverWarmupDelayTicks>
-
-				<m_ColourRed>0.0</m_ColourRed>
-				<m_ColourGreen>0.3764705882352941</m_ColourGreen>
-				<m_ColourBlue>0.7294117647058823</m_ColourBlue>
-			</li>
-		</comps>
-		<specialDisplayRadius>2</specialDisplayRadius>
-
-	</ThingDef>
-
-	<ThingDef ParentName="ShieldBase">
-		<defName>Building_Shield_Fortress</defName>
-		<label>Fortress shield</label>
-		<description>By refocusing the primary coil system into a vertical configuration the shields range can be extended, while lacking the flexability of the Fire Supression mode it does cover a large area and gain the ability to disrupt the avionic systems of DropPods, caulsing failure of their decent rockets and therefore a terminal velocity impact.</description>
-		<researchPrerequisites>
-			<li>Building_ShieldFortress_research</li>
-		</researchPrerequisites>
-		<graphicData>
-			<texPath>Things/ShieldBuilding_Green</texPath>
+			<texPath>Things/Building/Misc/MultiAnalyzer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.15,0.15,1.7,1.7)</rect>
+			</damageData>
 		</graphicData>
-		<uiIconPath>Things/ShieldBuilding_Green</uiIconPath>
+		<researchPrerequisites>
+			<li>ED_Prometheus_Shields_2_Research</li>
+		</researchPrerequisites>
+		<size>(2,2)</size>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.5</fillPercent>
+		<designationHotKey>Misc4</designationHotKey>
+		<designationCategory>Security</designationCategory>
+		<canOverlapZones>false</canOverlapZones>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>10000</WorkToBuild>
+			<Mass>100</Mass>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costList>
+			<Steel>100</Steel>
+			<Plasteel>50</Plasteel>
+			<Gold>20</Gold>
+		</costList>
 		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>1000</basePowerConsumption>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="EnhancedDevelopment.Shields.Basic.CompProperties_ShieldBuilding">
-				<m_FieldIntegrity_Max>16000</m_FieldIntegrity_Max>
-				<m_FieldIntegrity_Initial>100</m_FieldIntegrity_Initial>
-				<m_Field_Radius>20</m_Field_Radius>
-
-				<m_PowerRequiredCharging>-5000</m_PowerRequiredCharging>
-				<m_PowerRequiredSustaining>-2500</m_PowerRequiredSustaining>
-
-				<m_BlockIndirect_Avalable>true</m_BlockIndirect_Avalable>
-				<m_BlockDirect_Avalable>true</m_BlockDirect_Avalable>
-				<m_FireSupression_Avalable>false</m_FireSupression_Avalable>
-				<m_InterceptDropPod_Avalable>true</m_InterceptDropPod_Avalable>
-
-				<m_StructuralIntegrityMode>false</m_StructuralIntegrityMode>
-
-				<m_RechargeTickDelayInterval>15</m_RechargeTickDelayInterval>
-				<m_RecoverWarmupDelayTicks>900</m_RecoverWarmupDelayTicks>
-
-				<m_ColourRed>0.0</m_ColourRed>
-				<m_ColourGreen>1.0</m_ColourGreen>
-				<m_ColourBlue>0.5</m_ColourBlue>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>Building_ShieldGenerator</li>
+				</linkableFacilities>
 			</li>
 		</comps>
-		<costList>
-			<Steel>200</Steel>
-			<Silver>100</Silver>
-			<ComponentIndustrial>20</ComponentIndustrial>
-		</costList>
-
-		<size>(2,2)</size>
-		<specialDisplayRadius>20</specialDisplayRadius>
-
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
 	</ThingDef>
 
-	<ThingDef ParentName="ShieldBase">
-		<defName>Building_ShieldSIF</defName>
-		<label>SIF shield</label>
-		<description>Rather than creating a large circular shield this generator will create an small individual shield over each wall/door object.</description>
-		<researchPrerequisites>
-			<li>Building_ShieldSIF_research</li>
-		</researchPrerequisites>
-		<graphicData>
-			<texPath>Things/ShieldBuilding_Yellow</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<uiIconPath>Things/ShieldBuilding_Yellow</uiIconPath>
+	<ThingDef ParentName="ShieldModuleBase">
+		<defName>ShieldModuleCapacitor</defName>
+		<label>Shield: Capacitor</label>
+		<description>Shield Module: Capacitor
+This increases the maximum Shield Field Integrity of a Shield Generator. This allows it to absorb a greater number of impacts before going offline.</description>
 		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>1000</basePowerConsumption>
+			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+				<FieldIntegrity_Increase>500</FieldIntegrity_Increase>
+				<Range_Increase>0</Range_Increase>
+				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<DropPodIntercept>false</DropPodIntercept>
 			</li>
-			<li Class="CompProperties_Flickable"/>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="EnhancedDevelopment.Shields.Basic.CompProperties_ShieldBuilding">
-				<m_FieldIntegrity_Max>6000</m_FieldIntegrity_Max>
-				<m_FieldIntegrity_Initial>100</m_FieldIntegrity_Initial>
-				<m_Field_Radius>8</m_Field_Radius>
-
-				<m_PowerRequiredCharging>-2500</m_PowerRequiredCharging>
-				<m_PowerRequiredSustaining>-1500</m_PowerRequiredSustaining>
-
-				<m_BlockIndirect_Avalable>false</m_BlockIndirect_Avalable>
-				<m_BlockDirect_Avalable>true</m_BlockDirect_Avalable>
-				<m_FireSupression_Avalable>true</m_FireSupression_Avalable>
-				<m_InterceptDropPod_Avalable>false</m_InterceptDropPod_Avalable>
-
-				<m_StructuralIntegrityMode>true</m_StructuralIntegrityMode>
-
-				<m_RechargeTickDelayInterval>15</m_RechargeTickDelayInterval>
-				<m_RecoverWarmupDelayTicks>900</m_RecoverWarmupDelayTicks>
-
-				<m_ColourRed>0.0</m_ColourRed>
-				<m_ColourGreen>0.3764705882352941</m_ColourGreen>
-				<m_ColourBlue>0.7294117647058823</m_ColourBlue>
-
-				<SIFBuildings>
-					<li>Sandbags</li>
-					<li>Wall</li>
-					<li>Door</li>
-					<li>Autodoor</li>
-					<li>Embrasure</li>
-				</SIFBuildings>
-			</li>
-		</comps>	
+		</comps>
 	</ThingDef>
 
-	
+	<ThingDef ParentName="ShieldModuleBase">
+		<defName>ShieldModuleHorizontalProjector</defName>
+		<label>Shield: Horizontal Projector</label>
+		<description>Shield Module: Horizontal Projector
+This increases the maximum distance that a Shield Field can be extended from the Shield Generator, increasing the area that can be effectively protected by a single Shield Generator.</description>
+		<comps>
+			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
+				<Range_Increase>5</Range_Increase>
+				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<DropPodIntercept>false</DropPodIntercept>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="ShieldModuleBase">
+		<defName>ShieldModuleVerticalProjector</defName>
+		<label>Shield: Vertical Projector</label>
+		<description>Shield Module: Vertical Projector
+This allows the shield field to be extended vertically to prevent the safe landing of Drop Pods by interrupting the systems controlling their decent, causing them to violently impact the ground.</description>
+		<comps>
+			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
+				<Range_Increase>0</Range_Increase>
+				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<DropPodIntercept>true</DropPodIntercept>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="ShieldModuleBase">
+		<defName>ShieldModuleOrbitalDatalink</defName>
+		<label>Shield: Orbital Datalink</label>
+		<description>Shield Module: Orbital Datalink
+This links the Shield Generator to enhanced tactical sensors placed in orbit to allow the differentiation of friendly and hostile contacts to prevent hampering friendly operations, including both weapons fire and the deployment of DropPods.</description>
+		<comps>
+			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
+				<Range_Increase>0</Range_Increase>
+				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<DropPodIntercept>false</DropPodIntercept>
+				<IdentifyFriendFoe>true</IdentifyFriendFoe>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="ShieldModuleBase">
+		<defName>ShieldModulePowerConverter</defName>
+		<label>Shield: Power Converter</label>
+		<description>Shield Module: Power Converter
+This allows the Shield Generator to remain functioning in the event that main power is interrupted at the expense of a slow decay of the Shield Field Integrity.</description>
+		<comps>
+			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
+				<Range_Increase>0</Range_Increase>
+				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<DropPodIntercept>false</DropPodIntercept>
+				<SlowDischarge>true</SlowDischarge>
+			</li>
+		</comps>
+	</ThingDef>
+
 </Defs>

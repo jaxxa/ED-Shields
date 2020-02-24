@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--================================ Abstract bases ======================================-->
+
+	<ThingDef ParentName="BuildingBase" Name="EDSN_BuildingBase" Abstract="True">
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<statBases>
+			<Mass>50</Mass>
+		</statBases>	
+		<thingCategories>
+			<li>BuildingsSpecial</li>
+		</thingCategories>
+	</ThingDef>
+
+</Defs>

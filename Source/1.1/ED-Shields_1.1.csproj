@@ -7,8 +7,8 @@
     <ProjectGuid>{E5A32544-0FAE-4EA1-AC7B-100B96EEC6E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EnhancedDevelopment.Shields.Basic</RootNamespace>
-    <AssemblyName>ED-ShieldsBasic</AssemblyName>
+    <RootNamespace>EnhancedDevelopment.Shields</RootNamespace>
+    <AssemblyName>ED-Shields</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -64,16 +64,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patch\Patch.cs" />
+    <Compile Include="Patch\Patcher.cs" />
+    <Compile Include="Patch\Patches\PatchProjectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shields\Building_Shield.cs" />
-    <Compile Include="Shields\Comp_ShieldBuilding.cs" />
-    <Compile Include="Shields\enumShieldStatus.cs" />
-    <Compile Include="Shields\ShieldBlendingParticle.cs" />
-    <Compile Include="Shields\CompProperties_ShieldBuilding.cs" />
-    <Compile Include="Utilities\Graphics.cs" />
-    <Compile Include="Utilities\ReflectionHelper.cs" />
-    <Compile Include="Utilities\Vectors.cs" />
+    <Compile Include="Shields\CompProperties_ShieldGenerator.cs" />
+    <Compile Include="Shields\CompProperties_ShieldUpgrade.cs" />
+    <Compile Include="Shields\Comp_ShieldGenerator.cs" />
+    <Compile Include="Shields\Comp_ShieldUpgrade.cs" />
+    <Compile Include="Shields\EnumShieldStatus.cs" />
+    <Compile Include="Shields\ITab_ShieldGenerator.cs" />
+    <Compile Include="Shields\ShieldManagerMapComp.cs" />
+    <Compile Include="Shields\Utilities\Graphics.cs" />
+    <Compile Include="Shields\Utilities\VectorsUtils.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
