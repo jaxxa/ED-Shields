@@ -6,10 +6,10 @@ using System.Text;
 
 using Verse;
 using UnityEngine;
-using EnhancedDevelopment.Prometheus.Shields;
 using HarmonyLib;
+using Jaxxa.EnhancedDevelopment.Shields.Shields;
 
-namespace EnhancedDevelopment.Prometheus.Patch.Patches
+namespace Jaxxa.EnhancedDevelopment.Shields.Patch.Patches
 {
     class PatchProjectile : Patch
     {

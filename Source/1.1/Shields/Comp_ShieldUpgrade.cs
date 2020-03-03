@@ -5,7 +5,7 @@ using System.Text;
 using Verse;
 using RimWorld;
 
-namespace EnhancedDevelopment.Prometheus.Shields
+namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 {
     class Comp_ShieldUpgrade : ThingComp
     {

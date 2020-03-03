@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 
-namespace EnhancedDevelopment.Prometheus.Patch
+namespace Jaxxa.EnhancedDevelopment.Shields.Patch
 {
     abstract class Patch
     {

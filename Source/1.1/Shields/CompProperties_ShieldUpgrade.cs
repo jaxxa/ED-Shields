@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 
-namespace EnhancedDevelopment.Prometheus.Shields
+namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 {
     class CompProperties_ShieldUpgrade : CompProperties
     {

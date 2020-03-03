@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EnhancedDevelopment.Prometheus.Shields
+namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 {
     public enum EnumShieldStatus
     {

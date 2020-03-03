@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace EnhancedDevelopment.Prometheus.Shields
+namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 {
     class ITab_ShieldGenerator : ITab
     {

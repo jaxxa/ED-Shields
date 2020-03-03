@@ -6,14 +6,14 @@ using System.Text;
 using Verse;
 using HarmonyLib;
 
-namespace EnhancedDevelopment.Prometheus.Patch
+namespace Jaxxa.EnhancedDevelopment.Shields.Patch
 {
     [StaticConstructorOnStartup]
     internal class Patcher
     {
         static Patcher()
         {
-            string _LogLocation = "EnhancedDevelopment.Prometheus.Patches.Patcher(): ";
+            string _LogLocation = "Jaxxa.EnhancedDevelopment.Shields.Patch.Patcher(): ";
 
             Log.Message(_LogLocation + "Starting.");
 
@@ -22,7 +22,7 @@ namespace EnhancedDevelopment.Prometheus.Patch
             _Patches.Add(new Patches.PatchProjectile());
 
             //Create Harmony Instance
-            Harmony _Harmony = new HarmonyLib.Harmony("EnhancedDevelopment.Prometheus");
+            Harmony _Harmony = new HarmonyLib.Harmony("Jaxxa.EnhancedDevelopment.Shields");
 
             
             //Iterate Patches

@@ -7,7 +7,7 @@
 		<defName>Building_ShieldGenerator</defName>
 		<label>Shield Generator</label>
 		<description>Creates a Shield designed to protect critical ground installations. Can be upgraded with various enhancement modules.</description>
-		<thingClass>EnhancedDevelopment.Prometheus.Shields.Building_Shield</thingClass>
+		<thingClass>Jaxxa.EnhancedDevelopment.Shields.Shields.Building_Shield</thingClass>
 		<researchPrerequisites>
 			<li>ED_Prometheus_Shields_1_Research</li>
 		</researchPrerequisites>
@@ -43,7 +43,7 @@
 			<ComponentSpacer>15</ComponentSpacer>
 		</costList>
 		<inspectorTabs>
-			<li>EnhancedDevelopment.Prometheus.Shields.ITab_ShieldGenerator</li>
+			<li>Jaxxa.EnhancedDevelopment.Shields.Shields.ITab_ShieldGenerator</li>
 		</inspectorTabs>
 		<passability>Impassable</passability>
 		<selectable>true</selectable>
@@ -58,7 +58,7 @@
 			<li Class="CompProperties_Facility">
 				<maxSimultaneous>1</maxSimultaneous>
 			</li>
-			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldGenerator">
+			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldGenerator">
 
 				<m_FieldIntegrity_Initial>100</m_FieldIntegrity_Initial>
 				<m_FieldIntegrity_Max_Base>2000</m_FieldIntegrity_Max_Base>
@@ -140,7 +140,7 @@
 		<description>Shield Module: Capacitor
 This increases the maximum Shield Field Integrity of a Shield Generator. This allows it to absorb a greater number of impacts before going offline.</description>
 		<comps>
-			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>500</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
 				<PowerUsage_Increase>500</PowerUsage_Increase>
@@ -155,7 +155,7 @@ This increases the maximum Shield Field Integrity of a Shield Generator. This al
 		<description>Shield Module: Horizontal Projector
 This increases the maximum distance that a Shield Field can be extended from the Shield Generator, increasing the area that can be effectively protected by a single Shield Generator.</description>
 		<comps>
-			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>5</Range_Increase>
 				<PowerUsage_Increase>500</PowerUsage_Increase>
@@ -170,7 +170,7 @@ This increases the maximum distance that a Shield Field can be extended from the
 		<description>Shield Module: Vertical Projector
 This allows the shield field to be extended vertically to prevent the safe landing of Drop Pods by interrupting the systems controlling their decent, causing them to violently impact the ground.</description>
 		<comps>
-			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
 				<PowerUsage_Increase>500</PowerUsage_Increase>
@@ -185,7 +185,7 @@ This allows the shield field to be extended vertically to prevent the safe landi
 		<description>Shield Module: Orbital Datalink
 This links the Shield Generator to enhanced tactical sensors placed in orbit to allow the differentiation of friendly and hostile contacts to prevent hampering friendly operations, including both weapons fire and the deployment of DropPods.</description>
 		<comps>
-			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
 				<PowerUsage_Increase>500</PowerUsage_Increase>
@@ -201,7 +201,7 @@ This links the Shield Generator to enhanced tactical sensors placed in orbit to 
 		<description>Shield Module: Power Converter
 This allows the Shield Generator to remain functioning in the event that main power is interrupted at the expense of a slow decay of the Shield Field Integrity.</description>
 		<comps>
-			<li Class="EnhancedDevelopment.Prometheus.Shields.CompProperties_ShieldUpgrade">
+			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
 				<PowerUsage_Increase>500</PowerUsage_Increase>

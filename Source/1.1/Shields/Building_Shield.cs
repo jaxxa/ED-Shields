@@ -11,7 +11,7 @@ using Verse.Sound;
 
 //using EnhancedDevelopment.Shields.ShieldUtils;
 
-namespace EnhancedDevelopment.Prometheus.Shields
+namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 {
     [StaticConstructorOnStartup]
     public class Building_Shield : Building

@@ -7,7 +7,7 @@ using RimWorld;
 using UnityEngine;
 using System.Reflection;
 
-namespace EnhancedDevelopment.Prometheus.Shields
+namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 {
 
     [StaticConstructorOnStartup]
@@ -572,7 +572,7 @@ namespace EnhancedDevelopment.Prometheus.Shields
             }
 
             //Draw field
-            this.DrawField(EnhancedDevelopment.Prometheus.Shields.Utilities.VectorsUtils.IntVecToVec(this.parent.Position));
+            this.DrawField(Jaxxa.EnhancedDevelopment.Shields.Shields.Utilities.VectorsUtils.IntVecToVec(this.parent.Position));
 
         }
 
@@ -583,7 +583,7 @@ namespace EnhancedDevelopment.Prometheus.Shields
 
         public void DrawSubField(IntVec3 center, float radius)
         {
-            this.DrawSubField(EnhancedDevelopment.Prometheus.Shields.Utilities.VectorsUtils.IntVecToVec(center), radius);
+            this.DrawSubField(Jaxxa.EnhancedDevelopment.Shields.Shields.Utilities.VectorsUtils.IntVecToVec(center), radius);
         }
 
         //Draw the field on map
@@ -607,7 +607,7 @@ namespace EnhancedDevelopment.Prometheus.Shields
                 //currentMatrialColour = SolidColorMaterials.NewSolidColorMaterial(new Color(0.5f, 0.0f, 0.0f, 0.15f), ShaderDatabase.MetaOverlay);
             }
 
-            UnityEngine.Graphics.DrawMesh(EnhancedDevelopment.Prometheus.Shields.Utilities.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
+            UnityEngine.Graphics.DrawMesh(Jaxxa.EnhancedDevelopment.Shields.Shields.Utilities.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
 
         }
 

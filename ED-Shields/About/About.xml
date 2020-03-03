@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>ED-Shields</name>
-	<packageId>Jaxxa.ED.Shields</packageId>
+	<packageId>Jaxxa.EnhancedDevelopment.Shields</packageId>
 	<supportedVersions>
 		<li>1.0</li>
 		<li>1.1</li>
