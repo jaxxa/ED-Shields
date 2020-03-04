@@ -7,6 +7,17 @@
 		<li>1.1</li>
 	</supportedVersions>
 	<author>Jaxxa</author>
+	<loadAfter>
+		<li>brrainz.harmony</li>
+	</loadAfter>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
 	<url>https://github.com/jaxxa/JaxxaRimworldReleaseCollection/blob/master/README.md</url>
 	<description>Version: 2.0.0.0
 Links to all my mods including non steam versions available at: https://github.com/jaxxa/JaxxaRimworldReleaseCollection/blob/master/README.md
