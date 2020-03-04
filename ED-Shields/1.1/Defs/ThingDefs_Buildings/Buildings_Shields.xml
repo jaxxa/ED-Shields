@@ -3,7 +3,7 @@
 
 	<!-- Shield Building -->
 
-	<ThingDef ParentName="EDSN_BuildingBase">
+	<ThingDef ParentName="BuildingBase">
 		<defName>Building_ShieldGenerator</defName>
 		<label>Shield Generator</label>
 		<description>Creates a Shield designed to protect critical ground installations. Can be upgraded with various enhancement modules.</description>
@@ -14,7 +14,7 @@
 		<graphicData>
 			<texPath>Things/ShieldBuilding_Blue</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3,3)</drawSize>
+			<drawSize>(1,1)</drawSize>
 		</graphicData>
 
 		<uiIconPath>Things/ShieldBuilding_Blue</uiIconPath>
@@ -24,7 +24,7 @@
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<fillPercent>1</fillPercent>
-		<size>(3,3)</size>
+		<size>(1,1)</size>
 		<rotatable>false</rotatable>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<designationCategory>Security</designationCategory>
@@ -48,6 +48,10 @@
 		<passability>Impassable</passability>
 		<selectable>true</selectable>
 		<tickerType>Normal</tickerType>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsSpecial</li>
+        </thingCategories>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -78,14 +82,14 @@
 				<m_StructuralIntegrityMode>false</m_StructuralIntegrityMode>
 
 			</li>
-		</comps>
+		</comps>	
 	</ThingDef>
 
 
 	<!-- Shield Upgrades -->
 
 
-	<ThingDef Name="ShieldModuleBase" ParentName="EDSN_BuildingBase" Abstract="True">
+	<ThingDef Name="ShieldModuleBase" ParentName="BuildingBase" Abstract="True">
 		<defName>ShieldUpgrade</defName>
 		<label>ShieldUpgrade</label>
 		<thingClass>Building</thingClass>
@@ -93,7 +97,7 @@
 		<graphicData>
 			<texPath>Things/Building/Misc/MultiAnalyzer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(1,1)</drawSize>
 			<damageData>
 				<rect>(0.15,0.15,1.7,1.7)</rect>
 			</damageData>
@@ -101,7 +105,7 @@
 		<researchPrerequisites>
 			<li>ED_Prometheus_Shields_2_Research</li>
 		</researchPrerequisites>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<rotatable>false</rotatable>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
