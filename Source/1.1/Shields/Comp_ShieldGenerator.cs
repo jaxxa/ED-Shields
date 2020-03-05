@@ -48,6 +48,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
         private int m_RecoverWarmupDelayTicks;
         private int m_WarmupTicksRemaining;
 
+        private List<Building> m_AppliedUpgrades = new List<Building>();
 
         #endregion Variables
         
@@ -796,14 +797,46 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
                 }
             }
 
-
-
-
-
-
-
-
+            if (true)
+            {
+                Command_Action act = new Command_Action();
+                //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
+                act.action = () => this.ApplyUpgrades();
+                ////act.icon = UI_SHOW_OFF;
+                act.defaultLabel = "Apply Upgrades";
+                act.defaultDesc = "Apply Upgrades";
+                act.activateSound = SoundDef.Named("Click");
+                //act.hotKey = KeyBindingDefOf.DesignatorDeconstruct;
+                //act.groupKey = 689736;
+                yield return act;
+            }
+                                                         
         } //CompGetGizmosExtra()
+
+        public void ApplyUpgrades()
+        {
+            Log.Error("Existing Upgrade: " + this.m_AppliedUpgrades.Count());
+
+            var _AvalableUpgrades = this.parent
+                                        .Map
+                                        .listerBuildings
+                                        .allBuildingsColonist
+                                        //Add adjacent including diagonally.
+                                        .Where(x => x.Position.InHorDistOf(this.parent.Position, 1.6f))
+                                        .Where(x => x.TryGetComp<Comp_ShieldUpgrade>() != null)
+                                        .ToList();
+
+            Log.Error("Upgrades to add: " + _AvalableUpgrades.Count());
+
+            foreach (Building _Building in _AvalableUpgrades)
+            {
+                this.m_AppliedUpgrades.Add(_Building);
+            }
+
+            _AvalableUpgrades.ForEach(x => x.DeSpawn());
+
+            
+        }
 
         public void SwitchDirect()
         {
@@ -850,6 +883,8 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
             Scribe_Values.Look(ref m_CurrentStatus, "m_CurrentStatus");
             Scribe_Values.Look(ref m_FieldIntegrity_Current, "m_FieldIntegrity_Current");
+
+            Scribe_Collections.Look(ref m_AppliedUpgrades, "m_AppliedUpgrades", LookMode.Deep);
 
         }
 
