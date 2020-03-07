@@ -189,20 +189,8 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             this.m_IdentifyFriendFoe_Avalable = false;
 
             //Store the List of Building in initilisation????
-
-            CompFacility _Facility = this.parent.GetComp<CompFacility>();
-            Patch.Patcher.LogNULL(_Facility, "_Facility");
-
-            FieldInfo _LinkedBuildingsInfo = typeof(CompFacility).GetField("linkedBuildings", BindingFlags.NonPublic | BindingFlags.Instance);
-            Patch.Patcher.LogNULL(_LinkedBuildingsInfo, "_LinkedBuildingsInfo");
-
-            List<Thing> _LinkedBuildings = _LinkedBuildingsInfo.GetValue(_Facility) as List<Thing>;
-            Patch.Patcher.LogNULL(_LinkedBuildings, "_LinkedBuildings");
-
-            //Log.Message(_LinkedBuildings.Count.ToString());
-
-
-            _LinkedBuildings.ForEach(b =>
+         
+            this.m_AppliedUpgrades.ForEach(b =>
             {
                 Building _Building = b as Building;
                 Comp_ShieldUpgrade _Comp = _Building.GetComp<Comp_ShieldUpgrade>();
@@ -220,14 +208,12 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         private void AddStatsFromUpgrade(Comp_ShieldUpgrade comp)
         {
-
             this.m_FieldIntegrity_Max += comp.Properties.FieldIntegrity_Increase;
             this.m_FieldRadius_Avalable += comp.Properties.Range_Increase;
 
             //Power
             this.m_PowerRequired += comp.Properties.PowerUsage_Increase;
-
-
+            
             if (comp.Properties.DropPodIntercept)
             {
                 this.m_InterceptDropPod_Avalable = true;

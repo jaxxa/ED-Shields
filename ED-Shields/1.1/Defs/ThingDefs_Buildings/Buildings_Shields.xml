@@ -126,16 +126,6 @@
 			<Plasteel>50</Plasteel>
 			<Gold>20</Gold>
 		</costList>
-		<comps>
-			<li Class="CompProperties_AffectedByFacilities">
-				<linkableFacilities>
-					<li>Building_ShieldGenerator</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
 	</ThingDef>
 
 	<ThingDef ParentName="ShieldModuleBase">
