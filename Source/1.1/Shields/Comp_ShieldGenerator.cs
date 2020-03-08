@@ -801,27 +801,24 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         public void ApplyUpgrades()
         {
-            Log.Error("Existing Upgrade: " + this.m_AppliedUpgrades.Count());
-
-            var _AvalableUpgrades = this.parent
-                                        .Map
-                                        .listerBuildings
-                                        .allBuildingsColonist
-                                        //Add adjacent including diagonally.
-                                        .Where(x => x.Position.InHorDistOf(this.parent.Position, 1.6f))
-                                        .Where(x => x.TryGetComp<Comp_ShieldUpgrade>() != null)
-                                        .ToList();
-
-            Log.Error("Upgrades to add: " + _AvalableUpgrades.Count());
-
-            foreach (Building _Building in _AvalableUpgrades)
-            {
-                this.m_AppliedUpgrades.Add(_Building);
+            var _AvalableUpgradeBuilding = this.parent
+                                                .Map
+                                                .listerBuildings
+                                                .allBuildingsColonist
+                                                //Add adjacent including diagonally.
+                                                .Where(x => x.Position.InHorDistOf(this.parent.Position, 1.6f))
+                                                .Where(x => x.TryGetComp<Comp_ShieldUpgrade>() != null)
+                                                .FirstOrDefault();
+            if (_AvalableUpgradeBuilding != null)
+            { 
+                this.m_AppliedUpgrades.Add(_AvalableUpgradeBuilding);
+                _AvalableUpgradeBuilding.DeSpawn();
+                Messages.Message("Applying Shield Upgrade: " + _AvalableUpgradeBuilding.def.label, this.parent, MessageTypeDefOf.PositiveEvent);
             }
-
-            _AvalableUpgrades.ForEach(x => x.DeSpawn());
-
-            
+            else
+            {
+                Messages.Message("No Shield Upgrades Found.", this.parent, MessageTypeDefOf.RejectInput);
+            }
         }
 
         public void SwitchDirect()
