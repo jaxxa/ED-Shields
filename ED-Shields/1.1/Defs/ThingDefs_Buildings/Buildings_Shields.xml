@@ -66,11 +66,10 @@
 
 				<m_FieldIntegrity_Initial>100</m_FieldIntegrity_Initial>
 				<m_FieldIntegrity_Max_Base>2000</m_FieldIntegrity_Max_Base>
-				<m_Field_Radius_Base>8</m_Field_Radius_Base>
+				<m_Field_Radius_Base>10</m_Field_Radius_Base>
 
-				<m_PowerRequired_Charging>1500</m_PowerRequired_Charging>
-				<m_PowerRequired_Standby>1000</m_PowerRequired_Standby>
-
+				<m_PowerRequired_Charging>1000</m_PowerRequired_Charging>
+				<m_PowerRequired_Standby>500</m_PowerRequired_Standby>
 
 				<m_RechargeTickDelayInterval_Base>15</m_RechargeTickDelayInterval_Base>
 				<m_RechargeAmmount_Base>1</m_RechargeAmmount_Base>
@@ -80,7 +79,6 @@
 				<m_BlockDirect_Avalable>true</m_BlockDirect_Avalable>
 				<m_InterceptDropPod_Avalable>false</m_InterceptDropPod_Avalable>
 				<m_StructuralIntegrityMode>false</m_StructuralIntegrityMode>
-
 			</li>
 		</comps>	
 	</ThingDef>
@@ -137,7 +135,7 @@ This increases the maximum Shield Field Integrity of a Shield Generator. This al
 			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>500</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
-				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<PowerUsage_Increase>100</PowerUsage_Increase>
 				<DropPodIntercept>false</DropPodIntercept>
 			</li>
 		</comps>
@@ -152,7 +150,7 @@ This increases the maximum distance that a Shield Field can be extended from the
 			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>5</Range_Increase>
-				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<PowerUsage_Increase>100</PowerUsage_Increase>
 				<DropPodIntercept>false</DropPodIntercept>
 			</li>
 		</comps>
@@ -167,7 +165,7 @@ This allows the shield field to be extended vertically to prevent the safe landi
 			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
-				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<PowerUsage_Increase>100</PowerUsage_Increase>
 				<DropPodIntercept>true</DropPodIntercept>
 			</li>
 		</comps>
@@ -182,7 +180,7 @@ This links the Shield Generator to enhanced tactical sensors placed in orbit to 
 			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
-				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<PowerUsage_Increase>100</PowerUsage_Increase>
 				<DropPodIntercept>false</DropPodIntercept>
 				<IdentifyFriendFoe>true</IdentifyFriendFoe>
 			</li>
@@ -198,7 +196,7 @@ This allows the Shield Generator to remain functioning in the event that main po
 			<li Class="Jaxxa.EnhancedDevelopment.Shields.Shields.CompProperties_ShieldUpgrade">
 				<FieldIntegrity_Increase>0</FieldIntegrity_Increase>
 				<Range_Increase>0</Range_Increase>
-				<PowerUsage_Increase>500</PowerUsage_Increase>
+				<PowerUsage_Increase>0</PowerUsage_Increase>
 				<DropPodIntercept>false</DropPodIntercept>
 				<SlowDischarge>true</SlowDischarge>
 			</li>
