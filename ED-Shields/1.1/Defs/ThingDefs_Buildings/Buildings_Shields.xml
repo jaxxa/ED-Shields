@@ -29,7 +29,7 @@
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<designationCategory>Security</designationCategory>
 		<holdsRoof>false</holdsRoof>
-		<specialDisplayRadius>8</specialDisplayRadius>
+		<specialDisplayRadius>1.6</specialDisplayRadius>
 		<statBases>
 			<MaxHitPoints>500</MaxHitPoints>
 			<WorkToBuild>2000</WorkToBuild>
@@ -124,6 +124,7 @@
 			<Plasteel>50</Plasteel>
 			<Gold>20</Gold>
 		</costList>
+		<specialDisplayRadius>1.6</specialDisplayRadius>
 	</ThingDef>
 
 	<ThingDef ParentName="ShieldModuleBase">
