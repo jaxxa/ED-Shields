@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- Base -->
+	<RecipeDef Name="MakeShieldRecipe" Abstract="True" >
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>OmniGel</li>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<workSkill>Crafting</workSkill>
+	  <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+		<workAmount>200</workAmount>
+		<researchPrerequisites>
+			<li>Fabrication</li>
+		</researchPrerequisites>
+	</RecipeDef>
+
+	<!-- Shield Generator -->
+	<RecipeDef ParentName="MakeShieldRecipe">
+		<defName>Craft_Building_ShieldGenerator</defName>
+		<label>Make Shield Generator</label>
+		<description>Making a Shield Generator.</description>
+		<jobString>Making Shield Generator.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<Building_ShieldGenerator>1</Building_ShieldGenerator>
+		</products>
+	</RecipeDef>
+
+	<!-- Shield Upgrade Module: Capacitor -->
+	<RecipeDef ParentName="MakeShieldRecipe">
+		<defName>Craft_Building_ShieldUpgradeModuleCapacitor</defName>
+		<label>Make Shield Upgrade Module: Capacitor</label>
+		<description>Making a Shield Upgrade Module: Capacitor</description>
+		<jobString>Making Shield Upgrade Module: Capacitor</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<ShieldUpgradeModuleCapacitor>1</ShieldUpgradeModuleCapacitor>
+		</products>
+	</RecipeDef>
+
+	<!-- Shield Upgrade Module: Horizontal Projector -->
+	<RecipeDef ParentName="MakeShieldRecipe">
+		<defName>Craft_Building_ShieldUpgradeModuleHorizontalProjector</defName>
+		<label>Make Shield Upgrade Module: Horizontal Projector</label>
+		<description>Making a Shield Upgrade Module: Horizontal Projector</description>
+		<jobString>Making Shield Upgrade Module: Horizontal Projector</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<ShieldUpgradeModuleHorizontalProjector>1</ShieldUpgradeModuleHorizontalProjector>
+		</products>
+	</RecipeDef>
+
+	<!-- Shield Upgrade Module: Vertical Projector -->
+	<RecipeDef ParentName="MakeShieldRecipe">
+		<defName>Craft_Building_ShieldUpgradeModuleVerticalProjector</defName>
+		<label>Make Shield Upgrade Module: Vertical Projector</label>
+		<description>Making a Shield Upgrade Module: Vertical Projector</description>
+		<jobString>Making Shield Upgrade Module: Vertical Projector</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<ShieldUpgradeModuleVerticalProjector>1</ShieldUpgradeModuleVerticalProjector>
+		</products>
+	</RecipeDef>
+
+	<!-- Shield Upgrade Module: Orbital Datalink -->
+	<RecipeDef ParentName="MakeShieldRecipe">
+		<defName>Craft_Building_ShieldUpgradeModuleOrbitalDatalink</defName>
+		<label>Make Shield Upgrade Module: Orbital Datalink</label>
+		<description>Making a Shield Upgrade Module: Orbital Datalink</description>
+		<jobString>Making Shield Upgrade Module: Orbital Datalink</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<ShieldUpgradeModuleOrbitalDatalink>1</ShieldUpgradeModuleOrbitalDatalink>
+		</products>
+	</RecipeDef>
+
+	<!-- Shield Upgrade Module: Power Converter -->
+	<RecipeDef ParentName="MakeShieldRecipe">
+		<defName>Craft_Building_ShieldUpgradeModulePowerConverter</defName>
+		<label>Make Shield Upgrade Module: Power Converter</label>
+		<description>Making a Shield Upgrade Module: Power Converter</description>
+		<jobString>Making Shield Upgrade Module: Power Converter</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<ShieldUpgradeModulePowerConverter>1</ShieldUpgradeModulePowerConverter>
+		</products>
+	</RecipeDef>
+
+</Defs>

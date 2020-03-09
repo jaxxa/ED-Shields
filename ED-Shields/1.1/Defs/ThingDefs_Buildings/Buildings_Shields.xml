@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
+	<ThingDef Name="BuildingBase_Shield" ParentName="BuildingBase" Abstract="True">
+		<!-- Un Comment to allow building -->
+		<!--<designationCategory>Security</designationCategory>-->
+	</ThingDef>
+
 	<!-- Shield Building -->
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase_Shield">
 		<defName>Building_ShieldGenerator</defName>
 		<label>Shield Generator</label>
 		<description>Creates a Shield designed to protect critical ground installations. Can be upgraded with various enhancement modules.</description>
@@ -27,7 +32,6 @@
 		<size>(1,1)</size>
 		<rotatable>false</rotatable>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
 		<holdsRoof>false</holdsRoof>
 		<specialDisplayRadius>1.6</specialDisplayRadius>
 		<statBases>
@@ -84,10 +88,9 @@
 	</ThingDef>
 
 
-	<!-- Shield Upgrades -->
+	<!-- Shield Upgrade Modules -->
 
-
-	<ThingDef Name="ShieldModuleBase" ParentName="BuildingBase" Abstract="True">
+	<ThingDef Name="ShieldUpgradeModuleBase" ParentName="BuildingBase_Shield" Abstract="True">
 		<defName>ShieldUpgrade</defName>
 		<label>ShieldUpgrade</label>
 		<thingClass>Building</thingClass>
@@ -110,7 +113,6 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>0.5</fillPercent>
 		<designationHotKey>Misc4</designationHotKey>
-		<designationCategory>Security</designationCategory>
 		<canOverlapZones>false</canOverlapZones>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<statBases>
@@ -125,11 +127,15 @@
 			<Gold>20</Gold>
 		</costList>
 		<specialDisplayRadius>1.6</specialDisplayRadius>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsSpecial</li>
+        </thingCategories>
 	</ThingDef>
 
-	<ThingDef ParentName="ShieldModuleBase">
-		<defName>ShieldModuleCapacitor</defName>
-		<label>Shield: Capacitor</label>
+	<ThingDef ParentName="ShieldUpgradeModuleBase">
+		<defName>ShieldUpgradeModuleCapacitor</defName>
+		<label>Shield Upgrade: Capacitor</label>
 		<description>Shield Module: Capacitor
 This increases the maximum Shield Field Integrity of a Shield Generator. This allows it to absorb a greater number of impacts before going offline.</description>
 		<comps>
@@ -142,9 +148,9 @@ This increases the maximum Shield Field Integrity of a Shield Generator. This al
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="ShieldModuleBase">
-		<defName>ShieldModuleHorizontalProjector</defName>
-		<label>Shield: Horizontal Projector</label>
+	<ThingDef ParentName="ShieldUpgradeModuleBase">
+		<defName>ShieldUpgradeModuleHorizontalProjector</defName>
+		<label>Shield Upgrade: Horizontal Projector</label>
 		<description>Shield Module: Horizontal Projector
 This increases the maximum distance that a Shield Field can be extended from the Shield Generator, increasing the area that can be effectively protected by a single Shield Generator.</description>
 		<comps>
@@ -157,9 +163,9 @@ This increases the maximum distance that a Shield Field can be extended from the
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="ShieldModuleBase">
-		<defName>ShieldModuleVerticalProjector</defName>
-		<label>Shield: Vertical Projector</label>
+	<ThingDef ParentName="ShieldUpgradeModuleBase">
+		<defName>ShieldUpgradeModuleVerticalProjector</defName>
+		<label>Shield Upgrade: Vertical Projector</label>
 		<description>Shield Module: Vertical Projector
 This allows the shield field to be extended vertically to prevent the safe landing of Drop Pods by interrupting the systems controlling their decent, causing them to violently impact the ground.</description>
 		<comps>
@@ -172,9 +178,9 @@ This allows the shield field to be extended vertically to prevent the safe landi
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="ShieldModuleBase">
-		<defName>ShieldModuleOrbitalDatalink</defName>
-		<label>Shield: Orbital Datalink</label>
+	<ThingDef ParentName="ShieldUpgradeModuleBase">
+		<defName>ShieldUpgradeModuleOrbitalDatalink</defName>
+		<label>Shield Upgrade: Orbital Datalink</label>
 		<description>Shield Module: Orbital Datalink
 This links the Shield Generator to enhanced tactical sensors placed in orbit to allow the differentiation of friendly and hostile contacts to prevent hampering friendly operations, including both weapons fire and the deployment of DropPods.</description>
 		<comps>
@@ -188,9 +194,9 @@ This links the Shield Generator to enhanced tactical sensors placed in orbit to 
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="ShieldModuleBase">
-		<defName>ShieldModulePowerConverter</defName>
-		<label>Shield: Power Converter</label>
+	<ThingDef ParentName="ShieldUpgradeModuleBase">
+		<defName>ShieldUpgradeModulePowerConverter</defName>
+		<label>Shield Upgrade: Power Converter</label>
 		<description>Shield Module: Power Converter
 This allows the Shield Generator to remain functioning in the event that main power is interrupted at the expense of a slow decay of the Shield Field Integrity.</description>
 		<comps>
