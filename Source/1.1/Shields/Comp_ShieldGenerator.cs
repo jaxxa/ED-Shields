@@ -195,8 +195,8 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
                 Building _Building = b as Building;
                 Comp_ShieldUpgrade _Comp = _Building.GetComp<Comp_ShieldUpgrade>();
 
+                Patch.Patcher.LogNULL(_Building, "_Building");
                 Patch.Patcher.LogNULL(_Comp, "_Comp");
-                Patch.Patcher.LogNULL(_Comp.Properties, "_Comp.Properties");
 
                 this.AddStatsFromUpgrade(_Comp);
 
@@ -208,24 +208,28 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         private void AddStatsFromUpgrade(Comp_ShieldUpgrade comp)
         {
-            this.m_FieldIntegrity_Max += comp.Properties.FieldIntegrity_Increase;
-            this.m_FieldRadius_Avalable += comp.Properties.Range_Increase;
+
+            CompProperties_ShieldUpgrade _Properties = ((CompProperties_ShieldUpgrade)comp.props);
+            Patch.Patcher.LogNULL(_Properties, "_Properties");
+
+            this.m_FieldIntegrity_Max += _Properties.FieldIntegrity_Increase;
+            this.m_FieldRadius_Avalable += _Properties.Range_Increase;
 
             //Power
-            this.m_PowerRequired += comp.Properties.PowerUsage_Increase;
+            this.m_PowerRequired += _Properties.PowerUsage_Increase;
             
-            if (comp.Properties.DropPodIntercept)
+            if (_Properties.DropPodIntercept)
             {
                 this.m_InterceptDropPod_Avalable = true;
             }
 
-            if (comp.Properties.IdentifyFriendFoe)
+            if (_Properties.IdentifyFriendFoe)
             {
                 //Log.Message("Setting IFF");
                 this.m_IdentifyFriendFoe_Avalable = true;
             }
 
-            if (comp.Properties.SlowDischarge)
+            if (_Properties.SlowDischarge)
             {
                 this.SlowDischarge_Active = true;
             }
@@ -867,7 +871,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             Scribe_Values.Look(ref m_CurrentStatus, "m_CurrentStatus");
             Scribe_Values.Look(ref m_FieldIntegrity_Current, "m_FieldIntegrity_Current");
 
-            Scribe_Collections.Look(ref m_AppliedUpgrades, "m_AppliedUpgrades", LookMode.Deep);
+            Scribe_Collections.Look<Building>(ref m_AppliedUpgrades, "m_AppliedUpgrades", LookMode.Deep);
 
         }
 
