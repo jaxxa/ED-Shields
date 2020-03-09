@@ -44,7 +44,7 @@
 		<costList>
 			<Steel>100</Steel>
 			<Silver>100</Silver>
-			<ComponentSpacer>15</ComponentSpacer>
+			<ComponentSpacer>10</ComponentSpacer>
 		</costList>
 		<inspectorTabs>
 			<li>Jaxxa.EnhancedDevelopment.Shields.Shields.ITab_ShieldGenerator</li>
@@ -123,8 +123,8 @@
 		</statBases>
 		<costList>
 			<Steel>100</Steel>
-			<Plasteel>50</Plasteel>
-			<Gold>20</Gold>
+			<Silver>100</Silver>
+			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
 		<specialDisplayRadius>1.6</specialDisplayRadius>
 		<minifiedDef>MinifiedThing</minifiedDef>
