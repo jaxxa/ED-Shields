@@ -14,7 +14,7 @@
 		<description>Creates a Shield designed to protect critical ground installations. Can be upgraded with various enhancement modules.</description>
 		<thingClass>Jaxxa.EnhancedDevelopment.Shields.Shields.Building_Shield</thingClass>
 		<researchPrerequisites>
-			<li>ED_Prometheus_Shields_1_Research</li>
+			<li>Research_Shield</li>
 		</researchPrerequisites>
 		<graphicData>
 			<texPath>Things/ShieldBuilding_Blue</texPath>
@@ -104,7 +104,7 @@
 			</damageData>
 		</graphicData>
 		<researchPrerequisites>
-			<li>ED_Prometheus_Shields_2_Research</li>
+			<li>Research_Shield_Upgrades</li>
 		</researchPrerequisites>
 		<size>(1,1)</size>
 		<rotatable>false</rotatable>

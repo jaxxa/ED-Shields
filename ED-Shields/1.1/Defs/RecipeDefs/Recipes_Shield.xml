@@ -11,9 +11,6 @@
         <li>FabricationBench</li>
       </recipeUsers>
 		<workAmount>20000</workAmount>
-		<researchPrerequisites>
-			<li>Fabrication</li>
-		</researchPrerequisites>
 	</RecipeDef>
 
 	<!-- Shield Generator -->
@@ -22,6 +19,9 @@
 		<label>Make Shield Generator</label>
 		<description>Making a Shield Generator.</description>
 		<jobString>Making Shield Generator.</jobString>
+		<researchPrerequisites>
+			<li>Research_Shield</li>
+		</researchPrerequisites>
 		<ingredients>
 			<li>
 				<filter>
@@ -55,6 +55,10 @@
 
 	<!-- Make Shield Upgrade -->
 	<RecipeDef Name="MakeShieldUpgradeRecipe" ParentName="MakeShieldRecipe" Abstract="True" >
+		
+		<researchPrerequisites>
+			<li>Research_Shield_Upgrades</li>
+		</researchPrerequisites>
 		
 		<!-- Ingrediants overidden for Generator, applied to Upgrade Modules -->
 		<ingredients>

@@ -1,83 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ResearchTabDef>
-		<defName>EnhancedDevelopment</defName>
-		<label>Enhanced Development</label>
-	</ResearchTabDef>
-
 	<ResearchProjectDef>
-		<defName>Building_ShieldStandard_research</defName>
-		<label>Standard Shield Generator</label>
-		<description>Magnetic shield field slows and heats any projectiles to the point of evaporating.
-
-    The basics of the principle is the eddy current brake, however the complex system allows the barier to ignore projectiles that leave the shield.</description>
-		<baseCost>1000</baseCost>
-		<techLevel>Spacer</techLevel>
-		<prerequisites/>
-		<tab>EnhancedDevelopment</tab>
-		<researchViewX>0</researchViewX>
-		<researchViewY>1</researchViewY>
-	</ResearchProjectDef>
-
-	<ResearchProjectDef>
-		<defName>Building_ShieldFortress_research</defName>
-		<label>Fortress Shield</label>
-		<description>By refocusing the primary coil system into a vertical configuration the shields range can be extended, while lacking the flexability of the Fire Supression mode it does cover a large area and gain the ability to disrupt the avionic systems of DropPods, caulsing failure of their decent rockets and therefore a terminal velocity impact.</description>
-		<baseCost>1500</baseCost>
+		<defName>Research_Shield</defName>
+		<label>Shield Generation</label>
+		<description>Unlocks the Technology behind the production of Shield Generators. These use power to generate a particle barrier for the purpose of intercepting weapon fire.</description>
+		<baseCost>4000</baseCost>
 		<techLevel>Spacer</techLevel>
 		<prerequisites>
-			<li>Building_ShieldStandard_research</li>
+			<li>AdvancedFabrication</li>
 		</prerequisites>
-		<tab>EnhancedDevelopment</tab>
-		<researchViewX>1</researchViewX>
-		<researchViewY>0</researchViewY>
+		<researchViewX>17</researchViewX>
+		<researchViewY>2.5</researchViewY>
 	</ResearchProjectDef>
-
+	
 	<ResearchProjectDef>
-		<defName>Building_ShieldSmall_research</defName>
-		<label>Shields Small</label>
-		<description>Parts of the generator have been replaced by smaller components allowing it to be recessed into the floor allowing people to stand on the generator but reducing the size of the field generated.</description>
-		<baseCost>1000</baseCost>
+		<defName>Research_Shield_Upgrades</defName>
+		<label>Shield Generation</label>
+		<description>Unlocks the Ability to improve Shield Generators with Upgrades.</description>
+		<baseCost>4000</baseCost>
 		<techLevel>Spacer</techLevel>
 		<prerequisites>
-			<li>Building_ShieldStandard_research</li>
+			<li>Research_Shield</li>
 		</prerequisites>
-		<tab>EnhancedDevelopment</tab>
-		<researchViewX>1</researchViewX>
-		<researchViewY>1</researchViewY>
+		<researchViewX>18</researchViewX>
+		<researchViewY>2.5</researchViewY>
 	</ResearchProjectDef>
-
-	<ResearchProjectDef>
-		<defName>Building_ShieldSIF_research</defName>
-		<label>Shields SIF Generator</label>
-		<description>Rather than creating a large circular shield this generator will create an small individual shield over each wall/door object.</description>
-		<baseCost>2000</baseCost>
-		<techLevel>Spacer</techLevel>
-		<prerequisites>
-			<li>Building_ShieldStandard_research</li>
-		</prerequisites>
-		<tab>EnhancedDevelopment</tab>
-		<researchViewX>1</researchViewX>
-		<researchViewY>2</researchViewY>
-	</ResearchProjectDef>
-
-	<!--
-	<ResearchProjectDef>
-		<defName>Building_ShieldStandard_research</defName>
-		<label>Standard Shield Generator</label>
-		<description>Magnetic shield field slows and heats any projectiles to the point of evaporating.
-
-    The basics of the principle is the eddy current brake, however the complex system allows the barier to ignore projectiles that leave the shield. 
-		</description>
-		<baseCost>1000</baseCost>
-		<techLevel>Spacer</techLevel>
-		<prerequisites/>
-		<tab>EnhancedDevelopment</tab>
-		<researchViewX>0</researchViewX>
-		<researchViewY>0</researchViewY>
-	</ResearchProjectDef>
-	-->
+	
 
 </Defs>
 
