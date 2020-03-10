@@ -50,7 +50,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
         public ITab_ShieldGenerator()
         {
             base.size = ITab_ShieldGenerator.WinSize;
-            base.labelKey = "Shield";
+            base.labelKey = "TabShield";
         }
 
         protected override void FillTab()
