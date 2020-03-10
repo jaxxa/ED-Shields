@@ -805,24 +805,77 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         public void ApplyUpgrades()
         {
-            var _AvalableUpgradeBuilding = this.parent
+            var _PotentialUpgradeBuildings = this.parent
                                                 .Map
                                                 .listerBuildings
                                                 .allBuildingsColonist
                                                 //Add adjacent including diagonally.
                                                 .Where(x => x.Position.InHorDistOf(this.parent.Position, 1.6f))
-                                                .Where(x => x.TryGetComp<Comp_ShieldUpgrade>() != null)
-                                                .FirstOrDefault();
-            if (_AvalableUpgradeBuilding != null)
+                                                .Where(x => x.TryGetComp<Comp_ShieldUpgrade>() != null);
+
+
+
+            var _BuildingToAdd = _PotentialUpgradeBuildings.FirstOrDefault(x => this.IsAvalableUpgrade(x));
+            if (_BuildingToAdd != null)
             { 
-                this.m_AppliedUpgrades.Add(_AvalableUpgradeBuilding);
-                _AvalableUpgradeBuilding.DeSpawn();
-                Messages.Message("Applying Shield Upgrade: " + _AvalableUpgradeBuilding.def.label, this.parent, MessageTypeDefOf.PositiveEvent);
+                this.m_AppliedUpgrades.Add(_BuildingToAdd);
+                _BuildingToAdd.DeSpawn();
+                Messages.Message("Applying Shield Upgrade: " + _BuildingToAdd.def.label, this.parent, MessageTypeDefOf.PositiveEvent);
             }
             else
             {
-                Messages.Message("No Shield Upgrades Found.", this.parent, MessageTypeDefOf.RejectInput);
+
+                var _InvalidBuildings = _PotentialUpgradeBuildings.Where(x => !this.IsAvalableUpgrade(x, true));
+                if (_InvalidBuildings.Any())
+                {
+                    Messages.Message("No Valid Shield Upgrades Found.", this.parent, MessageTypeDefOf.RejectInput);
+                }
+                else
+                {
+                    Messages.Message("No Shield Upgrades Found.", this.parent, MessageTypeDefOf.RejectInput);
+                }
             }
+        }
+
+        private bool IsAvalableUpgrade(Building buildingToCheck, bool ResultMessages = false)
+        {
+            Comp_ShieldUpgrade _Comp = buildingToCheck.TryGetComp<Comp_ShieldUpgrade>();
+            
+            if (_Comp == null) 
+            {
+                if (ResultMessages)
+                {
+                    Messages.Message("Upgrade Comp Not Found, How did you even get here?.",
+                        buildingToCheck,
+                        MessageTypeDefOf.RejectInput);
+                }
+                return false; 
+            }
+
+            if (this.m_IdentifyFriendFoe_Avalable && _Comp.Properties.IdentifyFriendFoe)
+            {
+                if (ResultMessages)
+                {
+                    Messages.Message("Upgrade Contains IFF while shield already has it.",
+                        buildingToCheck,
+                        MessageTypeDefOf.RejectInput);
+                }
+                return false;
+            }
+
+            if (this.SlowDischarge_Active && _Comp.Properties.SlowDischarge)
+            {
+
+                if (ResultMessages)
+                {
+                    Messages.Message("Upgrade for slow discharge while shield already has it.",
+                        buildingToCheck,
+                        MessageTypeDefOf.RejectInput);
+                }
+                return false;
+            }
+            
+            return true;
         }
 
         public void SwitchDirect()
