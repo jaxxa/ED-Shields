@@ -33,6 +33,8 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
         private static Texture2D UI_SHOW_ON;
         private static Texture2D UI_SHOW_OFF;
 
+        private static Texture2D UI_LAUNCH_REPORT;
+
         //Visual Settings
         private bool m_ShowVisually_Active = true;
         private float m_ColourRed;
@@ -144,6 +146,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
             UI_SHOW_ON = ContentFinder<Texture2D>.Get("UI/ShieldShowOn", true);
             UI_SHOW_OFF = ContentFinder<Texture2D>.Get("UI/ShieldShowOff", true);
+            UI_LAUNCH_REPORT = ContentFinder<Texture2D>.Get("UI/Commands/LaunchReport");
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -792,7 +795,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
                 Command_Action act = new Command_Action();
                 //act.action = () => Designator_Deconstruct.DesignateDeconstruct(this);
                 act.action = () => this.ApplyUpgrades();
-                ////act.icon = UI_SHOW_OFF;
+                act.icon = UI_LAUNCH_REPORT;
                 act.defaultLabel = "Apply Upgrades";
                 act.defaultDesc = "Apply Upgrades";
                 act.activateSound = SoundDef.Named("Click");
