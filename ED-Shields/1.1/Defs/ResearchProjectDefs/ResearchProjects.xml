@@ -16,7 +16,7 @@
 	
 	<ResearchProjectDef>
 		<defName>Research_Shield_Upgrades</defName>
-		<label>Shield Generation</label>
+		<label>Shield Upgrades</label>
 		<description>Unlocks the Ability to improve Shield Generators with Upgrades.</description>
 		<baseCost>4000</baseCost>
 		<techLevel>Spacer</techLevel>
