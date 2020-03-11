@@ -22,51 +22,36 @@
 	<description>Version: 2.0.0.0
 Links to all my mods including non steam versions available at: https://github.com/jaxxa/JaxxaRimworldReleaseCollection/blob/master/README.md
 
-This mod allows you to place shield generators. They are expensive and power hungry but can really strengthen your defenses. The standard shields will stop projectiles that try to enter it, but allow weapons to be fired out.
+This mod allows you to research and construct shield generators. They are resource and power intensive but if used correctly can greatly strengthen your defences. Shield Generators and Upgrades can be crafted from the Fabrication bench after being research.
+
+Shield Generator:
+The Shield Generator is the Core of your new defensive emplacement. Once Powered it will generate a particle shield over the immediate area that will block incoming weapon fire. You are able to customise the Size of the Shield and if it blocks Direct and/or indirect weapons fire.
+
+Costs:
+200 Steel
+100 Silver
+10 Advanced Components
+Blocks 2000 Damage before going offline.
+
+The shield generator can be enhanced with a number of upgrades. Once these are crafted, they can be placed next to a Shield Generator, then on the Generator click the Apply Upgrade button. This will apply the upgrade to the Shield Generator.  All Upgrades cost 100 Steel, 100 Silver and 2 Advanced Components. All except the Power Converter will increase the power draw by 100 when applied.
 
 
-There are a number of different statistics that govern how Shield work.
-Strength: How much Damage a shield can Take
-Radius: How large the covered area is.
-BlockIndirect: Can is Block Bullets and other directly fired Projectiles.
-BlockDirect: Can it block Mortars and other Indirect Fire Weapons.
-FireSupression: Can is extinguish fires.
-DropPods: Can is target Drop Pods, frying their navigation and causing them to crash.
+The following Upgrades are available.
 
+Capacitor:
+Increases the shield strength by 500.
 
-	Standard Shield:
-Strength:4000
-Radius:8
-BlockIndirect:Yes
-BlockDirect:Yes
-FireSupression:Yes
-DropPods:No
+Horizontal Projector:
+Increases the maximum distance of the Shield by 5.
 
-	Small shield:
-Strength:200
-Radius:2
-BlockIndirect:Yes
-BlockDirect:Yes
-FireSupression:Yes
-DropPods:No
-	
-	Fortress shield:
-Strength:16000
-Radius:20
-BlockIndirect:Yes
-BlockDirect:Yes
-FireSupression:No
-DropPods:Yes
-	
-	SIF shield:
-Strength:6000
-Radius:8
-BlockIndirect:No
-BlockDirect:Yes
-FireSupression:Yes
-DropPods:No
+Vertical Projector:
+Allows the shield field to be extended vertically to prevent the safe landing of Drop Pods by interrupting the systems controlling their decent, causing them to violently impact the ground. This includes allied drop pods, so you may want to switch this off before trading or quest rewards if you don’t have the Orbital Datalink Upgrade. Only one can be installed.
 
-This is a Special type of Shield that specifically covers certain building instead of creating a large bubble.
+Orbital Datalink:
+This links the Shield Generator to enhanced tactical sensors placed in orbit to allow the differentiation of friendly and hostile contacts to prevent hampering friendly operations, including both weapons fire and the deployment of Drop Pods. Only one can be installed.
+
+Power Converter:
+This allows the Shield Generator to remain functioning in the event that main power is interrupted at the expense of a slow decay of the Shield Field Integrity. Only one can be installed.
 
 
 
