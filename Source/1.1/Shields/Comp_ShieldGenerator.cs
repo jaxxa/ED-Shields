@@ -877,7 +877,19 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
                 }
                 return false;
             }
-            
+
+            if (this.m_InterceptDropPod_Avalable && _Comp.Properties.DropPodIntercept)
+            {
+
+                if (ResultMessages)
+                {
+                    Messages.Message("Upgrade for drop pod intercept while shield already has it.",
+                        buildingToCheck,
+                        MessageTypeDefOf.RejectInput);
+                }
+                return false;
+            }
+
             return true;
         }
 
