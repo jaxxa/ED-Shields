@@ -4,13 +4,13 @@
 	<!-- Base -->
 	<RecipeDef Name="MakeShieldRecipe" Abstract="True" >
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-		<effectWorking>Smelt</effectWorking>
-		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
 		<workSkill>Crafting</workSkill>
 	  <recipeUsers>
         <li>FabricationBench</li>
       </recipeUsers>
-		<workAmount>20000</workAmount>
+		<workAmount>10000</workAmount>
 	</RecipeDef>
 
 	<!-- Shield Generator -->

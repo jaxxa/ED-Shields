@@ -54,3 +54,5 @@ DropPods: Can is target Drop Pods, frying their navigation and causing them to c
  * Update to 1.0
  * Some UI images from "Operative85" on the ludeon Forums
  
+2.0.0.0
+ * Rework and update to 1.1
