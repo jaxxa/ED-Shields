@@ -11,43 +11,7 @@ Strength: How much Damage a shield can Take
 Radius: How large the covered area is.
 BlockIndirect: Can is Block Bullets and other directly fired Projectiles.
 BlockDirect: Can it block Mortars and other Indirect Fire Weapons.
-FireSupression: Can is extinguish fires.
 DropPods: Can is target Drop Pods, frying their navigation and causing them to crash.
-
-
-	Standard Shield:
-Strength:4000
-Radius:8
-BlockIndirect:Yes
-BlockDirect:Yes
-FireSupression:Yes
-DropPods:No
-
-	Small shield:
-Strength:200
-Radius:2
-BlockIndirect:Yes
-BlockDirect:Yes
-FireSupression:Yes
-DropPods:No
-	
-	Fortress shield:
-Strength:16000
-Radius:20
-BlockIndirect:Yes
-BlockDirect:Yes
-FireSupression:No
-DropPods:Yes
-	
-	SIF shield:
-Strength:6000
-Radius:8
-BlockIndirect:No
-BlockDirect:Yes
-FireSupression:Yes
-DropPods:No
-
-This is a Special type of Shield that specifically covers certain building instead of creating a large bubble.
 	
 	
 #Change Log
@@ -89,3 +53,6 @@ This is a Special type of Shield that specifically covers certain building inste
 1.0.0.0
  * Update to 1.0
  * Some UI images from "Operative85" on the ludeon Forums
+ 
+2.0.0.0
+ * Rework and update to 1.1
