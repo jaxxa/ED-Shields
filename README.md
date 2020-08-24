@@ -4,7 +4,7 @@ A mod for the Game Rimworld
 
 This mod allows you to place shield generators. They are expensive and power hungry but can really strengthen your defences. The standard shields will stop projectiles that try to enter it, but allow weapons to be fired out.
 
-#Specifications
+## Specifications
 
 There are a number of different statistics that govern how Shield work.
 Strength: How much Damage a shield can Take
@@ -14,7 +14,7 @@ BlockDirect: Can it block Mortars and other Indirect Fire Weapons.
 DropPods: Can is target Drop Pods, frying their navigation and causing them to crash.
 	
 	
-#Change Log
+## Change Log
 
 01.00.00
 *Initial Release -A14
