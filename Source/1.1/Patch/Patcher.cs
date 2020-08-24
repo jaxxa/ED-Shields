@@ -20,6 +20,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Patch
             //Create List of Patches
             List<Patch> _Patches = new List<Patch>();
             _Patches.Add(new Patches.PatchProjectile());
+            _Patches.Add(new Patches.PatchDropPod());
 
             //Create Harmony Instance
             Harmony _Harmony = new HarmonyLib.Harmony("Jaxxa.EnhancedDevelopment.Shields");

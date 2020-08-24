@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Patch\Patch.cs" />
     <Compile Include="Patch\Patcher.cs" />
+    <Compile Include="Patch\Patches\PatchDroppod.cs" />
     <Compile Include="Patch\Patches\PatchProjectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shields\Building_Shield.cs" />
