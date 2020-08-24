@@ -30,7 +30,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             // Log.Message("MapCompTick");
         }
 
-        public bool WillDropPodBeIntercepted(DropPodIncoming dropPodToTest, bool hostile)
+        public bool WillDropPodBeIntercepted(DropPodIncoming dropPodToTest)
         {
             IEnumerable<Building_Shield> _ShieldBuildings = map.listerBuildings.AllBuildingsColonistOfClass<Building_Shield>();
             if (_ShieldBuildings.Any(x => x.WillInterceptDropPod(dropPodToTest) ))
