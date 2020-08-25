@@ -56,3 +56,7 @@ DropPods: Can is target Drop Pods, frying their navigation and causing them to c
  
 2.0.0.0
  * Rework and update to 1.1
+
+2.1.0.0
+  * Support for intercepting DropPods by GHXX
+  * Update to 1.2
