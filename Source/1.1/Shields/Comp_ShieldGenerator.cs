@@ -930,6 +930,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             Scribe_Values.Look(ref m_RechargeTickDelayInterval, "m_shieldRechargeTickDelay");
             Scribe_Values.Look(ref m_RecoverWarmupDelayTicks, "m_shieldRecoverWarmup");
 
+            Scribe_Values.Look(ref m_ShowVisually_Active, "m_ShowVisually_Active", true);
             Scribe_Values.Look(ref m_ColourRed, "m_colourRed");
             Scribe_Values.Look(ref m_ColourGreen, "m_colourGreen");
             Scribe_Values.Look(ref m_ColourBlue, "m_colourBlue");
