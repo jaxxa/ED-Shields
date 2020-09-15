@@ -125,6 +125,28 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
             }
 
+            if(this.SelectedCompShieldGenerator.IsStructuralIntegrityMode_Available())
+            {
+                if (this.SelectedCompShieldGenerator.StructuralIntegrityMode_Active())
+                {
+                    if (listing_Standard.ButtonText("Toggle SIF: Active"))
+                    {
+                        this.SelectedCompShieldGenerator.SwitchSIF();
+                    }
+                }
+                else
+                {
+                    if (listing_Standard.ButtonText("Toggle SIF: Inactive"))
+                    {
+                        this.SelectedCompShieldGenerator.SwitchSIF();
+                    }
+                }
+            }
+            else
+            {
+                listing_Standard.Label("SIF Unavalable");
+            }
+
             if (this.SelectedCompShieldGenerator.IsInterceptDropPod_Avalable())
             {
                 if (this.SelectedCompShieldGenerator.IntercepDropPod_Active())

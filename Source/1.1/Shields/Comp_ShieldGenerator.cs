@@ -98,6 +98,14 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             return this.m_BlockIndirect_Avalable && this.m_BlockIndirect_Requested;
         }
 
+        private bool m_StructuralIntegrityMode_Available;
+
+        private bool m_StructuralIntegrityMode_Requested = true;
+
+        public bool StructuralIntegrityMode_Active()
+        {
+            return this.m_StructuralIntegrityMode_Available && this.m_StructuralIntegrityMode_Requested;
+        }
         //Block Droppods ------------------------------------------------------------
 
         private bool m_InterceptDropPod_Avalable;
@@ -114,6 +122,12 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             return this.m_InterceptDropPod_Avalable;
         }
 
+        public bool IsStructuralIntegrityMode_Available()
+        {
+            return this.m_StructuralIntegrityMode_Available;
+        }
+
+
         // Identify Friend Foe ------------------------------------------------------
 
         private bool m_IdentifyFriendFoe_Avalable = false;
@@ -129,8 +143,25 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         public bool SlowDischarge_Active;
 
-        #endregion
+        private int m_TickCount = 0;
 
+        #endregion
+        List<Building> BuildingsToProtect
+        {
+            get
+            {
+                if (this.m_BuildingsToProtect == null)
+                {
+                    this.ReCalibrateBuildings();
+                }
+                return this.m_BuildingsToProtect;
+            }
+            set
+            {
+                this.m_BuildingsToProtect = value;
+            }
+        }
+        List<Building> m_BuildingsToProtect = null;
         #region Initilisation
 
         //Static Construtor
@@ -157,12 +188,11 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             this.m_Power = this.parent.GetComp<CompPowerTrader>();
 
             this.RecalculateStatistics();
+            this.ReCalibrateBuildings();
         }
 
         public void RecalculateStatistics()
         {
-            //Log.Message("RecalculateStatistics");
-
             //Visual Settings
             this.m_ColourRed = 0.5f;
             this.m_ColourGreen = 0.0f;
@@ -177,6 +207,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             this.m_BlockIndirect_Avalable = this.Properties.m_BlockIndirect_Avalable;
             this.m_BlockDirect_Avalable = this.Properties.m_BlockDirect_Avalable;
             this.m_InterceptDropPod_Avalable = this.Properties.m_InterceptDropPod_Avalable;
+            this.m_StructuralIntegrityMode_Available = this.Properties.m_StructuralIntegrityMode;
 
             //Power Settings
             this.m_PowerRequired = this.Properties.m_PowerRequired_Charging;
@@ -236,12 +267,52 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             {
                 this.SlowDischarge_Active = true;
             }
+            if (_Properties.SIFMode)
+            {
+                this.m_StructuralIntegrityMode_Available = true;
+            }
 
         }
 
         #endregion Initilisation
 
-        #region Methods
+        #region Method
+        public void ReCalibrateBuildings()
+        {
+            if (!StructuralIntegrityMode_Active())
+            {
+                return;
+            }
+
+            var allIndexes = GenRadial.RadialCellsAround(parent.Position, FieldRadius_Active(), true).Select(
+                cell => parent.Map.cellIndices.CellToIndex(cell));
+
+            BuildingsToProtect = allIndexes.Select(index => parent.Map.edificeGrid[index]).Where(
+                edifice => edifice != null && (
+                (edifice.def.coversFloor && edifice.def.holdsRoof &&
+                edifice.def.passability == Traversability.Impassable &&
+                (!edifice.def.building?.isNaturalRock ?? true)) || 
+                edifice.def.thingClass == typeof(Building_Door))).OfType<Building>().
+                ToList();
+            Log.Message(BuildingsToProtect.Count.ToString());
+        }
+
+        public void TickProtection()
+        {
+            if (!StructuralIntegrityMode_Active())
+            {
+                return;
+            }
+            
+            foreach (var building in BuildingsToProtect)
+            {
+                if (building.HitPoints < building.MaxHitPoints && FieldIntegrity_Current > 1)
+                {
+                    FieldIntegrity_Current -= 1;
+                    building.HitPoints += 1;
+                }
+            }
+        }
 
         public override void CompTick()
         {
@@ -251,7 +322,21 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
             this.UpdateShieldStatus();
 
+            this.TickProtection();
+
             this.TickRecharge();
+
+            this.UpdateShieldStatus();
+
+            m_TickCount += 1;
+            if (IsActive())
+            {
+                if (m_TickCount == 5000)
+                {
+                    ReCalibrateBuildings();
+                    m_TickCount = 0;
+                }
+            }
 
         }
 
@@ -568,6 +653,15 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
             //Draw field
             this.DrawField(Jaxxa.EnhancedDevelopment.Shields.Shields.Utilities.VectorsUtils.IntVecToVec(this.parent.Position));
 
+            if (!this.StructuralIntegrityMode_Active())
+            {
+                return;
+            }
+            foreach (var edifice in this.BuildingsToProtect)
+            {
+                var center = edifice.Position;
+                DrawSubField(center, 0.5f);
+            }
         }
 
         //public override void DrawExtraSelectionOverlays()
@@ -588,7 +682,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         public void DrawSubField(Vector3 position, float shieldShieldRadius)
         {
-            position = position + (new Vector3(0.5f, 0f, 0.5f));
+            position += new Vector3(0.5f, 0f, 0.5f);
 
             Vector3 s = new Vector3(shieldShieldRadius, 1f, shieldShieldRadius);
             Matrix4x4 matrix = default(Matrix4x4);
@@ -600,7 +694,6 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
                 currentMatrialColour = SolidColorMaterials.NewSolidColorMaterial(new Color(m_ColourRed, m_ColourGreen, m_ColourBlue, 0.15f), ShaderDatabase.MetaOverlay);
                 //currentMatrialColour = SolidColorMaterials.NewSolidColorMaterial(new Color(0.5f, 0.0f, 0.0f, 0.15f), ShaderDatabase.MetaOverlay);
             }
-
             UnityEngine.Graphics.DrawMesh(Jaxxa.EnhancedDevelopment.Shields.Shields.Utilities.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
 
         }
@@ -901,6 +994,10 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
         public void SwitchIndirect()
         {
             this.m_BlockIndirect_Requested = !this.m_BlockIndirect_Requested;
+        }
+        public void SwitchSIF()
+        {
+            this.m_StructuralIntegrityMode_Requested = !this.m_StructuralIntegrityMode_Requested;
         }
 
         public void SwitchInterceptDropPod()

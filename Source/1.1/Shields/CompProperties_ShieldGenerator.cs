@@ -32,8 +32,6 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
         public bool m_BlockDirect_Avalable = false;
         public bool m_BlockIndirect_Avalable = false;
         public bool m_InterceptDropPod_Avalable = false;
-        public bool m_StructuralIntegrityMode = false;
-        
-       // public List<string> SIFBuildings = new List<string>(); // Move to Global List.
+        public bool m_StructuralIntegrityMode = true;
     }
 }
