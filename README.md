@@ -16,48 +16,52 @@ DropPods: Can is target Drop Pods, frying their navigation and causing them to c
 	
 ## Change Log
 
-01.00.00
-*Initial Release -A14
+1.3.0.0
+ * Update for Rimworld 1.3
+ * The Numbering scheme has been changed, mostly to back to what it was, the first two will match the version of Rimworld it was built for, then the next two will be major and minor versions of the mod.
+  
+2.1.0.0
+  * Support for intercepting DropPods by GHXX
+  * Fix to save Shield Visual state
+  * Update to 1.2
 
-01.00.01
-*Fix for potentially not loading Graphical Resources on loading a saved game.
-
-02.00.00
-*Update to Alpha 15
-*Change to using Comps instead of Custom C# thingDefs, partially due to https://ludeon.com/forums/index.php?topic=25249
-
-02.00.01
-* Modifying Building_Shield.CurrentStatus, IsActive and CheckPowerOn.
-
-03.00.00
-*Update to Alpha 16
-
-03.00.01
-*Converting WorkToMake to WorkToBuild
-
-03.00.02
-* Shields now Require Components
-
-0.18.0.0
-* Update to Beta 18
-
-0.18.0.1
-* Increased Documentation.
-
-0.19.0.0
- * Update to B19
-
-0.19.0.1
- * Fix for not covering Embrasures
+2.0.0.0
+ * Rework and update to 1.1
  
 1.0.0.0
  * Update to 1.0
  * Some UI images from "Operative85" on the ludeon Forums
  
-2.0.0.0
- * Rework and update to 1.1
+0.19.0.1
+ * Fix for not covering Embrasures
 
-2.1.0.0
-  * Support for intercepting DropPods by GHXX
-  * Fix to save Shield Visual state
-  * Update to 1.2
+0.19.0.0
+ * Update to B19
+ 
+0.18.0.1
+* Increased Documentation.
+ 
+0.18.0.0
+* Update to Beta 18
+
+03.00.02
+* Shields now Require Components
+
+03.00.01
+*Converting WorkToMake to WorkToBuild
+
+03.00.00
+*Update to Alpha 16
+
+02.00.01
+* Modifying Building_Shield.CurrentStatus, IsActive and CheckPowerOn.
+
+02.00.00
+*Update to Alpha 15
+*Change to using Comps instead of Custom C# thingDefs, partially due to https://ludeon.com/forums/index.php?topic=25249
+
+01.00.01
+*Fix for potentially not loading Graphical Resources on loading a saved game.
+
+01.00.00
+*Initial Release -A14
