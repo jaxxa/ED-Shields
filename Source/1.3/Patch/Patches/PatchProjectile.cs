@@ -17,7 +17,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Patch.Patches
         protected override void ApplyPatch(Harmony harmony = null)
         {
 
-            this.ApplyLaunchPatch(harmony);
+            //this.ApplyLaunchPatch(harmony);
             this.ApplyTickPatch(harmony);
 
         }
