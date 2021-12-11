@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<Research_Shield.label>护盾发生器</Research_Shield.label>
+		<Research_Shield.description>解锁科技：护盾发生器。这是一种通过消耗电力产生屏障立场，从而拦截子弹的设备。</Research_Shield.description>
+		<Research_Shield_Upgrades.label>护盾升级</Research_Shield_Upgrades.label>
+		<Research_Shield_Upgrades.description>解锁功能：升级护盾发生器。</Research_Shield_Upgrades.description>
+	</LanguageData>

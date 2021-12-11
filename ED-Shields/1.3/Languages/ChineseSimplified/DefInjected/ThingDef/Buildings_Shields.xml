@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<Building_ShieldGenerator.label>制作护盾发生器</Building_ShieldGenerator.label>
+		<Building_ShieldGenerator.description>创建用于保护重要地面设施的防护罩。可以通过使用各种增强模块进行升级。</Building_ShieldGenerator.description>
+		<ShieldUpgrade.label>护盾升级</ShieldUpgrade.label>
+		<ShieldUpgrade.description>升级你的护盾。</ShieldUpgrade.description>
+		<ShieldUpgradeModuleCapacitor.label>护盾升级：强度升级模块</ShieldUpgradeModuleCapacitor.label>
+		<ShieldUpgradeModuleCapacitor.description>护盾模块：强度升级-可以增加护盾发生器的最大护盾值，这可以让护盾吸收更多的伤害。</ShieldUpgradeModuleCapacitor.description>
+		<ShieldUpgradeModuleHorizontalProjector.label>护盾升级：范围升级模块</ShieldUpgradeModuleHorizontalProjector.label>
+		<ShieldUpgradeModuleHorizontalProjector.description>护盾模块：范围升级-这个模块可以增加护盾发生器的范围，使其能保护更大的范围。</ShieldUpgradeModuleHorizontalProjector.description>
+		<ShieldUpgradeModuleVerticalProjector.label>护盾升级：防空升级模块</ShieldUpgradeModuleVerticalProjector.label>
+		<ShieldUpgradeModuleVerticalProjector.description>护盾模块：防空升级-这个模块可以使护盾垂直拓展，这可以使它具有防御空投仓的功能。安装这个模块后，空投仓无法安全落地--它们将会与地面来一个猛烈的亲吻。</ShieldUpgradeModuleVerticalProjector.description>
+		<ShieldUpgradeModuleOrbitalDatalink.label>护盾升级：敌友识别模块</ShieldUpgradeModuleOrbitalDatalink.label>
+		<ShieldUpgradeModuleOrbitalDatalink.description>护盾模块：敌友识别-这个模块使护盾发生器与放置在轨道上的增强型战术传感器连接在一起，这将使你的护盾发生器能够辨别出谁是敌人。安装后所有友方的武器和空投将不会被拦截。</ShieldUpgradeModuleOrbitalDatalink.description>
+		<ShieldUpgradeModulePowerConverter.label>护盾升级：电力转换模块</ShieldUpgradeModulePowerConverter.label>
+		<ShieldUpgradeModulePowerConverter.description>护盾模块：电力转换-这个模块使护盾发生器在电源中断的情况下也不会立刻停止，它会将护盾立场转换为电力来继续运行。</ShieldUpgradeModulePowerConverter.description>
+	</LanguageData>

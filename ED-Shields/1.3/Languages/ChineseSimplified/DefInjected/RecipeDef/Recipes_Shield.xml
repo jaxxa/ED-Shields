@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<Craft_Building_ShieldGenerator.label>制作护盾发生器</Craft_Building_ShieldGenerator.label>
+		<Craft_Building_ShieldGenerator.description>制作一个护盾发生器。</Craft_Building_ShieldGenerator.description>
+		<Craft_Building_ShieldGenerator.jobString>制作护盾发生器。</Craft_Building_ShieldGenerator.jobString>
+		<Craft_Building_ShieldUpgradeModuleCapacitor.label>制作护盾升级模块：强度升级</Craft_Building_ShieldUpgradeModuleCapacitor.label>
+		<Craft_Building_ShieldUpgradeModuleCapacitor.description>制作一个护盾升级模块：强度升级</Craft_Building_ShieldUpgradeModuleCapacitor.description>
+		<Craft_Building_ShieldUpgradeModuleCapacitor.jobString>制作护盾升级模块：强度升级</Craft_Building_ShieldUpgradeModuleCapacitor.jobString>
+		<Craft_Building_ShieldUpgradeModuleHorizontalProjector.label>制作护盾升级模块：范围升级</Craft_Building_ShieldUpgradeModuleHorizontalProjector.label>
+		<Craft_Building_ShieldUpgradeModuleHorizontalProjector.description>制作一个护盾升级模块：范围升级</Craft_Building_ShieldUpgradeModuleHorizontalProjector.description>
+		<Craft_Building_ShieldUpgradeModuleHorizontalProjector.jobString>制作护盾升级模块：范围升级</Craft_Building_ShieldUpgradeModuleHorizontalProjector.jobString>
+		<Craft_Building_ShieldUpgradeModuleVerticalProjector.label>制作护盾升级模块：防空升级</Craft_Building_ShieldUpgradeModuleVerticalProjector.label>
+		<Craft_Building_ShieldUpgradeModuleVerticalProjector.description>制作一个护盾升级模块：防空升级</Craft_Building_ShieldUpgradeModuleVerticalProjector.description>
+		<Craft_Building_ShieldUpgradeModuleVerticalProjector.jobString>制作护盾升级模块：防空升级</Craft_Building_ShieldUpgradeModuleVerticalProjector.jobString>
+		<Craft_Building_ShieldUpgradeModuleOrbitalDatalink.label>制作护盾升级模块：敌友识别</Craft_Building_ShieldUpgradeModuleOrbitalDatalink.label>
+		<Craft_Building_ShieldUpgradeModuleOrbitalDatalink.description>制作一个护盾升级模块：敌友识别</Craft_Building_ShieldUpgradeModuleOrbitalDatalink.description>
+		<Craft_Building_ShieldUpgradeModuleOrbitalDatalink.jobString>制作护盾升级模块：敌友识别</Craft_Building_ShieldUpgradeModuleOrbitalDatalink.jobString>
+		<Craft_Building_ShieldUpgradeModulePowerConverter.label>制作护盾升级模块：电力转换</Craft_Building_ShieldUpgradeModulePowerConverter.label>
+		<Craft_Building_ShieldUpgradeModulePowerConverter.description>制作一个护盾升级模块：电力转换</Craft_Building_ShieldUpgradeModulePowerConverter.description>
+		<Craft_Building_ShieldUpgradeModulePowerConverter.jobString>制作护盾升级模块：电力转换</Craft_Building_ShieldUpgradeModulePowerConverter.jobString>
+	</LanguageData>
