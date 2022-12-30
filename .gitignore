@@ -1,8 +1,3 @@
-#################
-## Jaxxa's Files to ignore.
-#################
-# Lines that start with '#' are comments.
-
 *.suo
 *.dll
 *.exe
@@ -18,3 +13,5 @@ Source/.vs/
 ED-Shields/1.1/Assemblies/0Harmony.xml
 Source/1.0/ED-Shields_1.0.csproj.user
 Source/1.1/ED-Shields_1.1.csproj.user
+
+Harmony/
