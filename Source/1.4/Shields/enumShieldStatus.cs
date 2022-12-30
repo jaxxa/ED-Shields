@@ -1,0 +1,16 @@
+﻿namespace Jaxxa.EnhancedDevelopment.Shields.Shields
+{
+    public enum EnumShieldStatus
+    {
+        //Online and gathering power
+        ActiveCharging,
+        //Charged and sustaining
+        ActiveSustaining,
+        //Online but low power
+        ActiveDischarging,
+        //Online and gathering power
+        Initilising,
+        //Disabled and offline
+        Offline
+    }
+}
