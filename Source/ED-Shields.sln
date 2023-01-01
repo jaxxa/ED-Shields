@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29503.13
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ED-Shields_1.0", "1.0\ED-Shields_1.0.csproj", "{D90E6072-FBE5-4A86-A1E1-11E12DC5E27B}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ED-Shields_1.2", "1.2\ED-Shields_1.2.csproj", "{6ED9011D-5EB2-4670-9BDB-B98333D3DF11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ED-Shields_1.3", "1.3\ED-Shields_1.3.csproj", "{7E7FC14A-98A4-4CAF-A281-CEE0F3BE86E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ED-Shields_1.4", "1.4\ED-Shields_1.4.csproj", "{FFD21F6F-46FC-41B5-B5F2-B2B280CA613F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7E7FC14A-98A4-4CAF-A281-CEE0F3BE86E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E7FC14A-98A4-4CAF-A281-CEE0F3BE86E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E7FC14A-98A4-4CAF-A281-CEE0F3BE86E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD21F6F-46FC-41B5-B5F2-B2B280CA613F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD21F6F-46FC-41B5-B5F2-B2B280CA613F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD21F6F-46FC-41B5-B5F2-B2B280CA613F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD21F6F-46FC-41B5-B5F2-B2B280CA613F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
