@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ResearchProjectDef>
+		<defName>Research_Shield</defName>
+		<label>Shield Generation</label>
+		<description>Unlocks the Technology behind the production of Shield Generators. These use power to generate a particle barrier for the purpose of intercepting weapon fire.</description>
+		<baseCost>4000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>AdvancedFabrication</li>
+		</prerequisites>
+		<researchViewX>17</researchViewX>
+		<researchViewY>2.5</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>Research_Shield_Upgrades</defName>
+		<label>Shield Upgrades</label>
+		<description>Unlocks the Ability to improve Shield Generators with Upgrades.</description>
+		<baseCost>4000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>Research_Shield</li>
+		</prerequisites>
+		<researchViewX>18</researchViewX>
+		<researchViewY>2.5</researchViewY>
+	</ResearchProjectDef>
+	
+
+</Defs>
+
+<!--
+    <prerequisites>
+      <li>ShipBasics</li>
+    </prerequisites>
+	
+-->
