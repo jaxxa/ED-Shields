@@ -20,7 +20,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         public ShieldManagerMapComp(Map map) : base(map)
         {
-            this.map = map;
+            //this.map = map;
             //   map.components.<ShieldManagerMapComp>();
         }
 

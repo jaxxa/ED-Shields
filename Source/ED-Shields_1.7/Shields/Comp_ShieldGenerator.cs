@@ -601,7 +601,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
                 //currentMatrialColour = SolidColorMaterials.NewSolidColorMaterial(new Color(0.5f, 0.0f, 0.0f, 0.15f), ShaderDatabase.MetaOverlay);
             }
 
-            UnityEngine.Graphics.DrawMesh(Jaxxa.EnhancedDevelopment.Shields.Shields.Utilities.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
+            Graphics.DrawMesh(Jaxxa.EnhancedDevelopment.Shields.Shields.Utilities.Graphics.CircleMesh, matrix, currentMatrialColour, 0);
 
         }
 

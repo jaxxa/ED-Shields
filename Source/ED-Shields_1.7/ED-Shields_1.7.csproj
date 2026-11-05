@@ -35,6 +35,10 @@
       <HintPath>..\..\..\..\RW-DLL\1.7\UnityStubs.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Waylith">
+      <HintPath>..\..\..\..\RW-DLL\1.7\Waylith.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
 
 </Project>
