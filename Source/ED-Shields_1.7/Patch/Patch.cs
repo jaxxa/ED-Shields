@@ -18,7 +18,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Patch
         /// <summary>
         /// Apply the patch.
         /// </summary>
-        protected abstract void ApplyPatch(Harmony harmony = null);
+        protected abstract void ApplyPatch(Harmony harmony);
 
         /// <summary>
         /// The Description of this patch.
@@ -30,7 +30,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Patch
         /// <summary>
         /// Checks if this Patch needs to be applied, and applies if needed.
         /// </summary>
-        public void ApplyPatchIfRequired(Harmony harmony = null)
+        public void ApplyPatchIfRequired(Harmony harmony)
         {
             string _LogLocation = "Shields.Patch.ApplyPatchIfRequired: ";
 

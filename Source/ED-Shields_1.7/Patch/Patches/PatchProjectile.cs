@@ -14,7 +14,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Patch.Patches
     class PatchProjectile : Patch
     {
 
-        protected override void ApplyPatch(Harmony harmony = null)
+        protected override void ApplyPatch(Harmony harmony)
         {
 
             //this.ApplyLaunchPatch(harmony);

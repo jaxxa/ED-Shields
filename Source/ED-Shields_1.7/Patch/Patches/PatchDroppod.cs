@@ -11,7 +11,7 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Patch.Patches
     class PatchDropPod : Patch
     {
 
-        protected override void ApplyPatch(Harmony harmony = null)
+        protected override void ApplyPatch(Harmony harmony)
         {
             ApplyTickPatch(harmony);
         }
