@@ -22,9 +22,9 @@ namespace Jaxxa.EnhancedDevelopment.Shields.Shields
 
         }
 
-        public override void PostDeSpawn(Map map)
+        public override void PostDeSpawn(Map map, DestroyMode destroyMode )
         {
-            base.PostDeSpawn(map);
+            base.PostDeSpawn(map, destroyMode);
 
             map.GetComponent<ShieldManagerMapComp>().RecalaculateAll();
 
